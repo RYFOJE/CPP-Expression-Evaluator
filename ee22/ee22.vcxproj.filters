@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\gats">
+      <UniqueIdentifier>{5ce59bb8-93a2-473d-94ac-d4437badc71e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ee">
+      <UniqueIdentifier>{2ef35f66-30d3-41e9-9d1e-ef6e23eecca7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common\src\boolean.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\expression_evaluator.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\function.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\integer.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\operand.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\operation.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\operator.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\parser.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\real.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\RPNEvaluator.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\token.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\tokenizer.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\variable.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gats\_src\ConsoleApp.cpp">
+      <Filter>Source Files\gats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gats\_src\win32\ConsoleCore.cpp">
+      <Filter>Source Files\gats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gats\_src\win32\ConsoleEnhanced.cpp">
+      <Filter>Source Files\gats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gats\_src\win32\XError.cpp">
+      <Filter>Source Files\gats</Filter>
+    </ClCompile>
+    <ClCompile Include="ee_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

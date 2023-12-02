@@ -1,0 +1,14 @@
+  1.0	1.0	0a_token_test
+  1.0	1.0	0b_left_parenthesis_token_test
+  1.0	1.0	0b_right_parenthesis_token_test
+  1.0	1.0	0c_separator_token_test
+  1.0	1.0	1_boolean_test
+  1.0	1.0	1_integer_test
+  1.0	1.0	1_real_test
+  1.0	1.0	1_variable_test
+  1.0	1.0	2_Factorial_operator_test
+  1.0	1.0	2_Identity_operator_test
+  1.0	1.0	2_Negation_operator_test
+  1.0	1.0	2_Not_operator_test
+
+Score = 12.0 of 12.0 (100.0%)

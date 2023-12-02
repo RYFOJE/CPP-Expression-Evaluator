@@ -1,0 +1,23 @@
+  0.0	1.0	parser_binary_addition
+  0.0	1.0	parser_double_parenthesis
+  1.0	1.0	parser_empty
+  0.0	1.0	parser_function_1_arg_abs
+  0.0	1.0	parser_function_1_arg_cos
+  0.0	1.0	parser_function_1_arg_sin
+  0.0	1.0	parser_function_1_arg_tan
+  0.0	1.0	parser_function_2_arg_max
+  0.0	1.0	parser_function_2_arg_min
+  0.0	1.0	parser_function_2_arg_pow
+  0.0	1.0	parser_function_argument_expression
+  0.0	1.0	parser_function_expression
+  0.0	1.0	parser_multi_parenthesis
+  0.0	1.0	parser_order_of_operation_a_m
+  0.0	1.0	parser_order_of_operation_m_a
+  0.0	1.0	parser_order_of_operation_right_assoc
+  0.0	1.0	parser_single_negative
+  0.0	1.0	parser_single_number
+  0.0	1.0	parser_single_parenthesis
+  0.0	1.0	parser_variable
+  0.0	1.0	parser_variable_variable
+
+Score = 1.0 of 21.0 (4.8%)

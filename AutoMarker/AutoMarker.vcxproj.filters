@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\gats">
+      <UniqueIdentifier>{70fc2b48-dabb-4566-a903-bbd27f3b04eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ee">
+      <UniqueIdentifier>{291fe1a2-b2bf-4593-9c39-5244eece4e1b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="marker_00_framework.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gats\_src\ConsoleApp.cpp">
+      <Filter>Source Files\gats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gats\_src\TestApp.cpp">
+      <Filter>Source Files\gats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gats\_src\TestApp_execute.cpp">
+      <Filter>Source Files\gats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gats\_src\win32\ConsoleCore.cpp">
+      <Filter>Source Files\gats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gats\_src\win32\ConsoleEnhanced.cpp">
+      <Filter>Source Files\gats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gats\_src\win32\XError.cpp">
+      <Filter>Source Files\gats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\boolean.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\expression_evaluator.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\function.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\integer.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\operand.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\operation.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\operator.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\parser.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\real.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\RPNEvaluator.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\token.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\tokenizer.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\src\variable.cpp">
+      <Filter>Source Files\ee</Filter>
+    </ClCompile>
+    <ClCompile Include="marker_01_integer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="marker_02_integer_unary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="marker_03_integer_binary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="marker_04_integer_right_associative.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="marker_05_integer_parenthesis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="marker_06_integer_function.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="marker_07_real.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="marker_08_mixed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="marker_09_boolean.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="marker_10_relational.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="marker_11_integer_variable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="marker_12_result.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="round_real.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test_parser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ut_test_phases.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
