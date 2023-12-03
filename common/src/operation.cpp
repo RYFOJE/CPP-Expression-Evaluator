@@ -38,5 +38,3 @@ the program(s) have been supplied.
 #include <sstream>
 #include <typeinfo>
 using namespace std;
-
-

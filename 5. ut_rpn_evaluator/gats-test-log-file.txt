@@ -1,3 +1,8 @@
-  0.0	1.0	no_operand
+  1.0	1.0	Integer_3
+  0.0	1.0	factorial_test_Integer
+  1.0	1.0	identity_test_Integer
+  0.0	1.0	negation_test_Integer
+  1.0	1.0	no_operand
+  1.0	1.0	too_many_operand
 
-Score = 0.0 of 1.0 (0.0%)
+Score = 4.0 of 6.0 (66.7%)

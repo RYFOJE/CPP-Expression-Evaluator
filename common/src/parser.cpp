@@ -44,6 +44,94 @@ the program(s) have been supplied.
 
 [[nodiscard]] TokenList Parser::parse(TokenList const& infixTokens) {
 	
+	TokenList outputQ;
+	std::stack<Token::pointer_type> opStack;
+
+	for (auto& token : infixTokens) {
+		
+		if (is<Operand>(token))
+			outputQ.push_back(token);
+
+		else if (is<Function>(token))
+			opStack.push(token);
+
+		else if (is<ArgumentSeparator>(token)) {
+
+			while (!opStack.empty() && !is<LeftParenthesis>(opStack.top())) {
+				outputQ.push_back(opStack.top());
+				opStack.pop();
+			}
+		}
+
+		else if (is<LeftParenthesis>(token))
+			opStack.push(token);
+
+		else if (is<RightParenthesis>(token)) {
+
+			while (!opStack.empty() && !is<LeftParenthesis>(opStack.top())) {
+				outputQ.push_back(opStack.top());
+				opStack.pop();
+			}
+
+			if (opStack.empty())
+				throw std::runtime_error("Right Paranthesis, has no matching left parenthesis.");
+			
+			opStack.pop(); // TODO Check to see if this is the correct way to implement this
+
+			if (!opStack.empty() && is<Function>(opStack.top())) {
+				outputQ.push_back(opStack.top());
+				opStack.pop();
+			}
+		} // Right Parenthesis
+
+		else if (is<Operator>(token)) {
+
+			while (!opStack.empty()) {
+
+				if (!is<Operator>(opStack.top())) {
+					break;
+				}
+
+				if (is<NonAssociative>(token)) {
+					break;
+				}
+
+				Operator::pointer_type tokenCurrToken = convert<Operator>(token);
+				Operator::pointer_type tokenTop = convert<Operator>(opStack.top());
+
+				if (is<LAssocOperator>(token) && tokenCurrToken->precedence() > tokenTop->precedence()) {
+					break;
+				}
+
+				if (is<RAssocOperator>(token) && tokenCurrToken->precedence() >= tokenTop->precedence()) {
+					break;
+				}
+
+				outputQ.push_back(opStack.top());
+				opStack.pop();
+			}
+
+			opStack.push(token);
+
+		}
+
+		else {
+			throw std::runtime_error("Unknown Token");
+		}
+
+	} // for-each
+
+	while (!opStack.empty()) {
+
+		if (is<LeftParenthesis>(opStack.top())) {
+			throw std::runtime_error("Missing right-pranthesis.");
+		}
+
+		outputQ.push_back(opStack.top());
+		opStack.pop();
+
+	}
+
 	// The following line is just a placeholder until you have completed the parser.
-	return TokenList();
+	return outputQ;
 }

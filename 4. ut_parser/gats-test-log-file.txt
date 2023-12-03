@@ -1,23 +1,23 @@
-  0.0	1.0	parser_binary_addition
-  0.0	1.0	parser_double_parenthesis
+  1.0	1.0	parser_binary_addition
+  1.0	1.0	parser_double_parenthesis
   1.0	1.0	parser_empty
-  0.0	1.0	parser_function_1_arg_abs
-  0.0	1.0	parser_function_1_arg_cos
-  0.0	1.0	parser_function_1_arg_sin
-  0.0	1.0	parser_function_1_arg_tan
-  0.0	1.0	parser_function_2_arg_max
-  0.0	1.0	parser_function_2_arg_min
-  0.0	1.0	parser_function_2_arg_pow
-  0.0	1.0	parser_function_argument_expression
-  0.0	1.0	parser_function_expression
-  0.0	1.0	parser_multi_parenthesis
-  0.0	1.0	parser_order_of_operation_a_m
-  0.0	1.0	parser_order_of_operation_m_a
-  0.0	1.0	parser_order_of_operation_right_assoc
-  0.0	1.0	parser_single_negative
-  0.0	1.0	parser_single_number
-  0.0	1.0	parser_single_parenthesis
-  0.0	1.0	parser_variable
-  0.0	1.0	parser_variable_variable
+  1.0	1.0	parser_function_1_arg_abs
+  1.0	1.0	parser_function_1_arg_cos
+  1.0	1.0	parser_function_1_arg_sin
+  1.0	1.0	parser_function_1_arg_tan
+  1.0	1.0	parser_function_2_arg_max
+  1.0	1.0	parser_function_2_arg_min
+  1.0	1.0	parser_function_2_arg_pow
+  1.0	1.0	parser_function_argument_expression
+  1.0	1.0	parser_function_expression
+  1.0	1.0	parser_multi_parenthesis
+  1.0	1.0	parser_order_of_operation_a_m
+  1.0	1.0	parser_order_of_operation_m_a
+  1.0	1.0	parser_order_of_operation_right_assoc
+  1.0	1.0	parser_single_negative
+  1.0	1.0	parser_single_number
+  1.0	1.0	parser_single_parenthesis
+  1.0	1.0	parser_variable
+  1.0	1.0	parser_variable_variable
 
-Score = 1.0 of 21.0 (4.8%)
+Score = 21.0 of 21.0 (100.0%)
