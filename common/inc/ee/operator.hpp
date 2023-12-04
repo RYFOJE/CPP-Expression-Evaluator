@@ -123,11 +123,17 @@ public:
 						/*! Power token. */
 						class Power : public RAssocOperator {
 						DEF_PRECEDENCE(POWER)
+
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Assignment token. */
 						class Assignment : public RAssocOperator {
 						DEF_PRECEDENCE(ASSIGNMENT)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
+
 						};
 
 
@@ -137,86 +143,120 @@ public:
 						/*! Addition token. */
 						class Addition : public LAssocOperator {
 						DEF_PRECEDENCE(ADDITIVE)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! And token. */
 						class And : public LAssocOperator {
 						DEF_PRECEDENCE(LOGAND)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Division token. */
 						class Division : public LAssocOperator {
 						DEF_PRECEDENCE(MULTIPLICATIVE)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Equality token. */
 						class Equality : public LAssocOperator {
 						DEF_PRECEDENCE(EQUALITY)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Greater than token. */
 						class Greater : public LAssocOperator {
 						DEF_PRECEDENCE(RELATIONAL)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Greater than or equal to token. */
 						class GreaterEqual : public LAssocOperator {
 						DEF_PRECEDENCE(RELATIONAL)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Inequality operator token. */
 						class Inequality : public LAssocOperator {
 						DEF_PRECEDENCE(EQUALITY)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Less than operator token. */
 						class Less : public LAssocOperator {
 						DEF_PRECEDENCE(RELATIONAL)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Less than equal-to operator token. */
 						class LessEqual : public LAssocOperator {
 						DEF_PRECEDENCE(RELATIONAL)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Multiplication operator token. */
 						class Multiplication : public LAssocOperator {
 						DEF_PRECEDENCE(MULTIPLICATIVE)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Modulus operator token. */
 						class Modulus : public LAssocOperator {
 						DEF_PRECEDENCE(MULTIPLICATIVE)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Nand operator token. */
 						class Nand : public LAssocOperator {
 						DEF_PRECEDENCE(LOGAND)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Nor operator token. */
 						class Nor : public LAssocOperator {
 						DEF_PRECEDENCE(LOGOR)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Or operator token. */
 						class Or : public LAssocOperator {
 						DEF_PRECEDENCE(LOGOR)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Subtraction operator token. */
 						class Subtraction : public LAssocOperator {
 						DEF_PRECEDENCE(ADDITIVE)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! XOR operator token. */
 						class Xor : public LAssocOperator {
 						DEF_PRECEDENCE(LOGOR)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! XNOR operator token. */
 						class Xnor : public LAssocOperator {
 						DEF_PRECEDENCE(LOGOR)
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 
@@ -231,14 +271,20 @@ public:
 
 						/*! Identity operator token. */
 						class Identity : public UnaryOperator {
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Negation operator token. */
 						class Negation : public UnaryOperator {
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 						/*! Not operator token. */
 						class Not : public UnaryOperator {
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};
 
 				/*! Postfix Operator token base class. */
@@ -246,4 +292,6 @@ public:
 
 						/*! Factorial token base class. */
 						class Factorial : public PostfixOperator {
+						public:
+							[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const override;
 						};

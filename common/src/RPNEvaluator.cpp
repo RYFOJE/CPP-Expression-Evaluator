@@ -51,28 +51,19 @@ the program(s) have been supplied.
 
 		else {
 
+			// Convert the token to an operation
 			Operation::pointer_type currOperation = convert<Operation>(token);
 
+			// Check if there are enough operands for the operation
 			if (currOperation->number_of_args() > opStack.size()) {
 				throw std::runtime_error("Insufficient # of operands for operation");
 			}
 
-			// Pop the correct number of operands from the operand stack
-			for (int i = 0; i < currOperation->number_of_args(); i++) {
-
-				std::stack<Operand::pointer_type> opToPass;
-
-				// Get the rightmost element and add it to the list of operands to pass
-				opToPass.push(convert<Operand>(opStack.top()));
-				opStack.pop();
-
-
-
-				break; // TODO REMOVE THIS AND ADD CODE FOR THIS
-				
-			}
+			// Perform the operation of the current token
+			currOperation->perform(opStack);
 
 		} // end not operand
+		
 	} // End for rpnExpression
 
 	if (opStack.size() > 1)
@@ -81,7 +72,7 @@ the program(s) have been supplied.
 	if (opStack.empty())
 		throw std::runtime_error("Error: insufficient operands");
 
-
+	
 
 
 		/*

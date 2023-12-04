@@ -60,6 +60,7 @@ public:
 private:
 	value_type	value_;
 public:
+	
 	Real(value_type value = value_type(0)) : value_(value) { }
 	[[nodiscard]] value_type	value() const { return value_; };
 	[[nodiscard]] string_type	str() const override;

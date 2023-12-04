@@ -52,6 +52,7 @@ the program(s) have been supplied.
 #include <ee/token.hpp>
 #include <ee/operand.hpp>
 
+#include <stack>
 
 
 /*! Operation token base class. */
@@ -60,4 +61,5 @@ public:
 	DEF_POINTER_TYPE(Operation)
 
 	[[nodiscard]] virtual unsigned number_of_args() const = 0;
+	[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type> &opStack) const = 0;
 };

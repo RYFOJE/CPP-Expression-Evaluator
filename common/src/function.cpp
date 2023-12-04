@@ -48,3 +48,80 @@ the program(s) have been supplied.
 
 
 
+
+void Abs::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Arccos::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Arcsin::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Arctan::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Ceil::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Cos::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Exp::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Floor::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Lb::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Ln::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Log::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Result::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+
+void Sin::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Sqrt::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Tan::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Arctan2::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Max::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Min::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
+
+void Pow::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+}
