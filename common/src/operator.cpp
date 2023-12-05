@@ -164,4 +164,26 @@ void Not::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 void Factorial::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the top right operand
+	Operand::pointer_type currOperand = opStack.top();
+	opStack.pop();
+
+	if (is<Real>(currOperand)) {
+		throw std::runtime_error("Error: Operand cannot be a Real");
+	}
+
+	// Get the numerical value and create a value to hold the running total
+	Integer::value_type amount = value_of<Integer>(currOperand);
+	Integer::value_type runningTotal(1);
+
+	// Perform the factorial calculation
+	for (int i = 1; i < amount; i++) {
+
+		runningTotal *= i;
+
+	}
+
+	// Create an operand with the given value and add it to the operand stack
+	opStack.push(make_operand<Integer>(runningTotal));
+
 }
