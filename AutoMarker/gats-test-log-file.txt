@@ -1,5 +1,5 @@
-  0.0	1.2	00a_parser_empty
-  0.0	1.2	00b_rpn_evaluator_empty
+  1.2	1.2	00a_parser_empty
+  1.2	1.2	00b_rpn_evaluator_empty
   0.0	1.2	00c_expression_evaluator_unknown_token
   0.0	1.2	00d_expression_evaluator_empty_expression
   0.0	1.0	01a_parser_integers
@@ -197,4 +197,4 @@
   0.0	0.6	11h_EE_variable
   0.0	5.0	12a_express_result
 
-Score = 0.0 of 95.0 (0.0%)
+Score = 2.5 of 95.0 (2.6%)

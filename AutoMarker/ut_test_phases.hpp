@@ -1,7 +1,7 @@
 #pragma once
 
-#define TEST_PARSER false
-#define TEST_RPN false
+#define TEST_PARSER true
+#define TEST_RPN true
 #define TEST_EE false
 
 #define TEST_INTEGER false

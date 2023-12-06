@@ -72,54 +72,6 @@ the program(s) have been supplied.
 	if (opStack.empty())
 		throw std::runtime_error("Error: insufficient operands");
 
-	
-
-
-		/*
-		// if token is an operand, push it to the stack
-		if (token->isOperand()) {
-			opStack.push(std::dynamic_pointer_cast<Operand>(token));
-		}
-		// if token is an operator, pop two operands from the stack, apply the operator, and push the result back to the stack
-		else if (token->isOperator()) {
-			Operand::pointer_type op2 = opStack.top();
-			opStack.pop();
-			Operand::pointer_type op1 = opStack.top();
-			opStack.pop();
-			opStack.push(std::dynamic_pointer_cast<Operation>(token)->perform(op1, op2));
-		}
-		// if token is a function, pop one operand from the stack, apply the function, and push the result back to the stack
-		else if (token->isFunction()) {
-			Operand::pointer_type op1 = opStack.top();
-			opStack.pop();
-			opStack.push(std::dynamic_pointer_cast<Function>(token)->perform(op1));
-		}
-		// if token is a variable, push it to the stack
-		else if (token->isVariable()) {
-			opStack.push(std::dynamic_pointer_cast<Variable>(token));
-		}
-		// if token is a left parenthesis, push it to the stack
-		else if (token->isLeftParen()) {
-			opStack.push(std::dynamic_pointer_cast<LeftParen>(token));
-		}
-		// if token is a right parenthesis, pop operands from the stack until a left parenthesis is encountered
-		else if (token->isRightParen()) {
-			while (!opStack.empty() && !opStack.top()->isLeftParen()) {
-				Operand::pointer_type op2 = opStack.top();
-				opStack.pop();
-				Operand::pointer_type op1 = opStack.top();
-				opStack.pop();
-				opStack.push(std::dynamic_pointer_cast<Operation>(op2)->perform(op1, op2));
-			}
-			// pop the left parenthesis from the stack
-			opStack.pop();
-		}
-		// if token is a comma, pop operands from the stack until a left parenthesis is encountered
-		else if (token->isComma()) {
-			while (!opStack.empty() && !opStack.top()->isLeftParen()) {
-				Operand::pointer_type op2 = opStack.top();
-				opStack.pop();
-	*/
 
 	// The following line is just a placeholder until you have completed the parser.
 	return opStack.top();

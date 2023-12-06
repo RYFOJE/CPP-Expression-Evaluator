@@ -1,8 +1,35 @@
   1.0	1.0	Integer_3
-  0.0	1.0	factorial_test_Integer
+  1.0	1.0	Real_3_14
+  1.0	1.0	constant_E
+  1.0	1.0	constant_Pi
+  1.0	1.0	factorial_test_Integer
   1.0	1.0	identity_test_Integer
+  1.0	1.0	identity_test_Real
   1.0	1.0	negation_test_Integer
+  1.0	1.0	negation_test_Real
   1.0	1.0	no_operand
+  1.0	1.0	test_addition_Integer
+  1.0	1.0	test_addition_Integer_Real
+  1.0	1.0	test_addition_Real
+  1.0	1.0	test_addition_Real_Integer
+  1.0	1.0	test_divide_Integer
+  1.0	1.0	test_divide_Integer_Real
+  1.0	1.0	test_divide_Real
+  1.0	1.0	test_divide_Real_Integer
+  1.0	1.0	test_modulus_Integer
+  1.0	1.0	test_multiply_Integer
+  1.0	1.0	test_multiply_Integer_Real
+  1.0	1.0	test_multiply_Real
+  1.0	1.0	test_multiply_Real_Integer
+  0.0	1.0	test_neg_power_Integer
+  0.0	1.0	test_power_Integer
+  0.0	1.0	test_power_Integer_Real
+  0.0	1.0	test_power_Real
+  0.0	1.0	test_power_Real_Integer
+  1.0	1.0	test_subtraction_Integer
+  1.0	1.0	test_subtraction_Integer_Real
+  1.0	1.0	test_subtraction_Real
+  1.0	1.0	test_subtraction_Real_Integer
   1.0	1.0	too_many_operand
 
-Score = 5.0 of 6.0 (83.3%)
+Score = 28.0 of 33.0 (84.8%)

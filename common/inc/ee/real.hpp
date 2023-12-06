@@ -62,8 +62,10 @@ private:
 public:
 	
 	Real(value_type value = value_type(0)) : value_(value) { }
+	Real(Token::string_type str) : value_(value_type(str)) { }
 	[[nodiscard]] value_type	value() const { return value_; };
 	[[nodiscard]] string_type	str() const override;
+
 };
 
 
@@ -79,3 +81,9 @@ class E : public Real {
 public:
 	E() : Real(boost::math::constants::e<value_type>()) { }
 };
+
+
+/*! Make a new smart-pointer managed Token object with constructor parameter. */
+template <typename T, class... Args> inline Real::pointer_type [[nodiscard]] make_real(Args ... params) {
+	return Real::pointer_type(new T(params...));
+}

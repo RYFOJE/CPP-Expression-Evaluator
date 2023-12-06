@@ -54,7 +54,6 @@ the program(s) have been supplied.
 #include <boost/multiprecision/cpp_int.hpp>
 
 
-
 /*! Integer token. */
 class Integer : public Operand {
 public:
@@ -66,6 +65,14 @@ public:
 	Integer( value_type value = 0 )
 		: value_( value ) { }
 
+	Integer(Token::string_type str) : value_(value_type(str)) { }
+
 	[[nodiscard]]	value_type	value() const { return value_; }
 	[[nodiscard]]	string_type	str() const override;
+
 };
+
+/*! Make a new smart-pointer managed Token object with constructor parameter. */
+template <typename T, class... Args> inline Integer::pointer_type [[nodiscard]] make_integer(Args ... params) {
+	return Integer::pointer_type(new T(params...));
+}
