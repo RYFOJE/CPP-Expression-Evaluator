@@ -63,3 +63,10 @@ using namespace std;
 	return oss.str();
 }
 
+namespace helper {
+
+	[[nodiscard]] inline bool is_real(Operand::pointer_type lhs, Operand::pointer_type rhs) {
+		return (is<Real>(lhs) || is<Real>(rhs));
+	}
+	
+}

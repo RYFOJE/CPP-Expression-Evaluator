@@ -87,3 +87,9 @@ public:
 template <typename T, class... Args> inline Real::pointer_type [[nodiscard]] make_real(Args ... params) {
 	return Real::pointer_type(new T(params...));
 }
+
+namespace helper {
+
+	[[nodiscard]] inline bool is_real(Operand::pointer_type lhs, Operand::pointer_type rhs);
+
+}

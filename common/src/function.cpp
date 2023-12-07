@@ -97,7 +97,6 @@ void Result::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 }
 
-
 void Sin::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 }

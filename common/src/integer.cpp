@@ -60,3 +60,14 @@ using namespace std;
 	return value().str();
 }
 
+namespace helper {
+
+	[[nodiscard]] inline bool is_integer(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs) {
+		return (is<Integer>(lhs) || is<Integer>(rhs));
+	}
+
+	[[nodiscard]] inline bool is_integer(Operand::pointer_type const& op) {
+		return is<Integer>(op);
+	}
+
+}

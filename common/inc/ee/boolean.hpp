@@ -72,3 +72,16 @@ class False : public Boolean {
 public:
 	False() : Boolean(false) { }
 };
+
+/*! Boolean factory function. */
+inline Boolean::pointer_type make_bool(bool value) {
+	return Boolean::pointer_type(new Boolean(value));
+}
+
+namespace helper {
+	
+	[[nodiscard]] bool is_bool(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs);
+	[[nodiscard]] bool is_bool(Operand::pointer_type const& op);
+
+}
+
