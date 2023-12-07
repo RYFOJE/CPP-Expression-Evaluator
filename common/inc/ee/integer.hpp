@@ -81,5 +81,6 @@ namespace helper {
 
 	[[nodiscard]] inline bool is_integer(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs);
 	[[nodiscard]] inline bool is_integer(Operand::pointer_type const& op);
+	
 
 }
