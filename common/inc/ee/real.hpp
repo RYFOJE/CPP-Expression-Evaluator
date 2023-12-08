@@ -100,6 +100,7 @@ template <typename T, class... Args> inline Real::pointer_type [[nodiscard]] mak
 
 namespace helper {
 
-	[[nodiscard]] bool is_real(Operand::pointer_type lhs, Operand::pointer_type rhs);
+	[[nodiscard]] bool is_real(const Operand::pointer_type lhs, const Operand::pointer_type rhs);
+	[[nodiscard]] bool is_real(const Operand::pointer_type op);
 
 }

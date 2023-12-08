@@ -5,7 +5,7 @@
 #define TEST_INTEGER true
 
 #define TEST_UNARY_OPERATOR true
-#define TEST_BINARY_OPERATOR false
+#define TEST_BINARY_OPERATOR true
 
 #define	TEST_NAMED_OPERATOR false
 #define TEST_PARENTHESIS false

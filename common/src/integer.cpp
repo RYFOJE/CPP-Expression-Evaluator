@@ -91,7 +91,6 @@ namespace helper {
 		throw std::runtime_error("Error: Wrong data type used with get_as_real");
 
 	}
-
 }
 
 
@@ -118,12 +117,57 @@ void Integer::perform_addition(operand_stack_type& opStack) {
 	else
 		throw std::runtime_error("Invalid operand type for addition.");
 
-	
+	opStack.push(result);
 };
 
-void Integer::perform_subtraction(operand_stack_type& opStack) {};
+void Integer::perform_subtraction(operand_stack_type& opStack) {
+
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	Operand::pointer_type result;
+
+	if (helper::is_integer(lhs)) {
+
+		result = make_operand<Integer>(value_of<Integer>(lhs) + this->value_);
+
+	}
+
+	else if (helper::is_real(lhs))
+		result = make_operand<Real>(value_of<Real>(lhs) + value_of<Real>(helper::get_as_real(this)));
+
+	else
+		throw std::runtime_error("Invalid operand type for addition.");
+
+};
 void Integer::perform_multiplication(operand_stack_type& opStack) {};
-void Integer::perform_division(operand_stack_type& opStack) {};
+void Integer::perform_division(operand_stack_type& opStack) {
+
+	// Prevent division by zero
+	if (this->value_ == 0)
+		throw std::runtime_error("Error: Division by zero.");
+
+	// Get the left operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	Operand::pointer_type result;
+
+	// Check to see if the correct datatype has been passed
+	if (helper::is_real(lhs)) {
+		result = make_operand<Real>(value_of<Real>(lhs) / value_of<Real>(helper::get_as_real(this)));
+	}
+
+	else if (helper::is_integer(lhs)) {
+		result = make_operand<Integer>(value_of<Integer>(lhs) / this->value_);
+	}
+
+	else
+		throw std::runtime_error("Invalid operand type for addition.");
+
+	opStack.push(result);
+
+};
 void Integer::perform_modulus(operand_stack_type& opStack) {};
 void Integer::perform_power(operand_stack_type& opStack) {};
 
