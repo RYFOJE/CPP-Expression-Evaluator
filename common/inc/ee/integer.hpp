@@ -76,10 +76,3 @@ public:
 template <typename T, class... Args> inline Integer::pointer_type [[nodiscard]] make_integer(Args ... params) {
 	return Integer::pointer_type(new T(params...));
 }
-
-namespace helper {
-
-	[[nodiscard]] inline bool is_integer(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs);
-	[[nodiscard]] inline bool is_integer(Operand::pointer_type const& op);
-
-}

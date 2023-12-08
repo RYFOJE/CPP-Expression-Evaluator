@@ -2,57 +2,26 @@
   1.0	1.0	Real_3_14
   1.0	1.0	constant_E
   1.0	1.0	constant_Pi
-  1.0	1.0	constant_false
-  1.0	1.0	constant_true
   1.0	1.0	factorial_test_Integer
   1.0	1.0	identity_test_Integer
   1.0	1.0	identity_test_Real
   1.0	1.0	negation_test_Integer
   1.0	1.0	negation_test_Real
   1.0	1.0	no_operand
-  1.0	1.0	not_test_Boolean
   1.0	1.0	test_addition_Integer
   1.0	1.0	test_addition_Integer_Real
   1.0	1.0	test_addition_Real
   1.0	1.0	test_addition_Real_Integer
-  1.0	1.0	test_and
   1.0	1.0	test_divide_Integer
   1.0	1.0	test_divide_Integer_Real
   1.0	1.0	test_divide_Real
   1.0	1.0	test_divide_Real_Integer
-  0.0	1.0	test_equality_boolean
-  0.0	1.0	test_equality_integer
-  0.0	1.0	test_equality_mixed
-  0.0	1.0	test_equality_real
-  0.0	1.0	test_greater_boolean
-  0.0	1.0	test_greater_equal_boolean
-  0.0	1.0	test_greater_equal_integer
-  0.0	1.0	test_greater_equal_mixed
-  0.0	1.0	test_greater_equal_real
-  0.0	1.0	test_greater_integer
-  0.0	1.0	test_greater_mixed
-  0.0	1.0	test_greater_real
-  0.0	1.0	test_inequality_boolean
-  0.0	1.0	test_inequality_integer
-  0.0	1.0	test_inequality_mixed
-  0.0	1.0	test_inequality_real
-  0.0	1.0	test_less_boolean
-  0.0	1.0	test_less_equal_boolean
-  0.0	1.0	test_less_equal_integer
-  0.0	1.0	test_less_equal_mixed
-  0.0	1.0	test_less_equal_real
-  0.0	1.0	test_less_integer
-  0.0	1.0	test_less_mixed
-  0.0	1.0	test_less_real
   1.0	1.0	test_modulus_Integer
   1.0	1.0	test_multiply_Integer
   1.0	1.0	test_multiply_Integer_Real
   1.0	1.0	test_multiply_Real
   1.0	1.0	test_multiply_Real_Integer
-  0.0	1.0	test_nand
   0.0	1.0	test_neg_power_Integer
-  0.0	1.0	test_nor
-  1.0	1.0	test_or
   0.0	1.0	test_power_Integer
   0.0	1.0	test_power_Integer_Real
   0.0	1.0	test_power_Real
@@ -61,7 +30,6 @@
   1.0	1.0	test_subtraction_Integer_Real
   1.0	1.0	test_subtraction_Real
   1.0	1.0	test_subtraction_Real_Integer
-  0.0	1.0	test_xor
   1.0	1.0	too_many_operand
 
-Score = 33.0 of 65.0 (50.8%)
+Score = 28.0 of 33.0 (84.8%)

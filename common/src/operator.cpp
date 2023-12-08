@@ -45,10 +45,14 @@ the program(s) have been supplied.
 #include <ee/integer.hpp>
 #include <ee/real.hpp>
 #include <ee/variable.hpp>
-#include <ee/boolean.hpp>
 #include <cassert>
 
 #include <iostream>
+
+
+[[nodiscard]] inline bool is_real(Operand::pointer_type lhs, Operand::pointer_type rhs) {
+	return (is<Real>(lhs) || is<Real>(rhs));
+}
 
 Real::pointer_type get_as_real(Operand::pointer_type operand) {
 
@@ -68,15 +72,11 @@ Real::pointer_type get_as_real(Operand::pointer_type operand) {
 
 }
 
+
+
 void Power::perform(std::stack<Operand::pointer_type>& opStack) const {
 
-	// Get the right operand
-	Operand::pointer_type rhs = opStack.top();
-	opStack.pop();
 
-	// Get the left operand
-	Operand::pointer_type lhs = opStack.top();
-	opStack.pop();
 
 }
 
@@ -88,6 +88,7 @@ void Addition::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	// Get the right operand
 	Operand::pointer_type rhs = opStack.top();
+	get_as_real(rhs);
 	opStack.pop();
 
 	// Get the left operand
@@ -96,7 +97,7 @@ void Addition::perform(std::stack<Operand::pointer_type>& opStack) const {
 	opStack.pop();
 
 	// TODO FIX THIS AS IT DOES NOT WORK WITH MIXED DATA TYPES
-	if (helper::is_real(lhs, rhs)) {
+	if (is_real(lhs, rhs)) {
 
 		// Convert both to real and make sure they are
 
@@ -151,26 +152,6 @@ void Addition::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 void And::perform(std::stack<Operand::pointer_type>& opStack) const {
 
-	// Get the right operand
-	Operand::pointer_type rhs = opStack.top();
-	opStack.pop();
-
-	// Get the left operand
-	Operand::pointer_type lhs = opStack.top();
-	opStack.pop();
-
-	if (helper::is_bool(lhs, rhs)) {
-
-		Boolean::value_type rhsValue = value_of<Boolean>(rhs);
-		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
-		opStack.push(make_operand<Boolean>(lhsValue && rhsValue));
-
-	}
-	else {
-		// Throw an exception
-		throw std::exception("Invalid operand type for negation.");
-	}
-
 }
 
 void Division::perform(std::stack<Operand::pointer_type>& opStack) const {
@@ -184,7 +165,7 @@ void Division::perform(std::stack<Operand::pointer_type>& opStack) const {
 	opStack.pop();
 
 	// TODO FIX THIS AS IT DOES NOT WORK WITH MIXED DATA TYPES
-	if (helper::is_real(lhs, rhs)) {
+	if (is_real(lhs, rhs)) {
 
 		// Convert both to real and make sure they are
 
@@ -204,36 +185,6 @@ void Division::perform(std::stack<Operand::pointer_type>& opStack) const {
 }
 
 void Equality::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-	// Get the right operand
-	Operand::pointer_type rhs = opStack.top();
-	opStack.pop();
-
-	// Get the left operand
-	Operand::pointer_type lhs = opStack.top();
-	opStack.pop();
-
-	if (helper::is_bool(lhs, rhs)) {
-
-		Boolean::value_type rhsValue = value_of<Boolean>(rhs);
-		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
-		opStack.push(make_operand<Real>(lhsValue || rhsValue));
-
-	}
-	else if (helper::is_real(lhs, rhs)) {
-		// Throw an exception
-		throw std::exception("Invalid operand type for negation.");
-	}
-
-	else if (helper::is_integer(lhs, rhs)) {
-		// Throw an exception
-		throw std::exception("Invalid operand type for negation.");
-	}
-
-	else {
-		// Throw an exception
-		throw std::exception("Invalid operand type for negation.");
-	}
 
 }
 
@@ -268,7 +219,7 @@ void Multiplication::perform(std::stack<Operand::pointer_type>& opStack) const {
 	opStack.pop();
 
 	// TODO FIX THIS AS IT DOES NOT WORK WITH MIXED DATA TYPES
-	if (helper::is_real(lhs, rhs)) {
+	if (is_real(lhs, rhs)) {
 
 		// Convert both to real and make sure they are
 
@@ -298,7 +249,7 @@ void Modulus::perform(std::stack<Operand::pointer_type>& opStack) const {
 	opStack.pop();
 
 	// TODO FIX THIS AS IT DOES NOT WORK WITH MIXED DATA TYPES
-	if (helper::is_real(lhs, rhs)) {
+	if (is_real(lhs, rhs)) {
 		throw std::runtime_error("Error: Cannot perform modulo on Real number");
 	}
 
@@ -322,26 +273,6 @@ void Nor::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 void Or::perform(std::stack<Operand::pointer_type>& opStack) const {
 
-	// Get the right operand
-	Operand::pointer_type rhs = opStack.top();
-	opStack.pop();
-
-	// Get the left operand
-	Operand::pointer_type lhs = opStack.top();
-	opStack.pop();
-
-	if (helper::is_bool(lhs, rhs)) {
-		
-		Boolean::value_type rhsValue = value_of<Boolean>(rhs);
-		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
-		opStack.push(make_operand<Boolean>(lhsValue || rhsValue));
-
-	}
-	else {
-		// Throw an exception
-		throw std::exception("Invalid operand type for negation.");
-	}
-
 }
 
 void Subtraction::perform(std::stack<Operand::pointer_type>& opStack) const {
@@ -355,7 +286,7 @@ void Subtraction::perform(std::stack<Operand::pointer_type>& opStack) const {
 	opStack.pop();
 
 	// TODO FIX THIS AS IT DOES NOT WORK WITH MIXED DATA TYPES
-	if (helper::is_real(lhs, rhs)) {
+	if (is_real(lhs, rhs)) {
 
 		// Convert both to real and make sure they are
 
@@ -416,23 +347,6 @@ void Negation::perform(std::stack<Operand::pointer_type>& opStack) const {
 }
 
 void Not::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-	Operand::pointer_type currOperand = opStack.top();
-	opStack.pop();
-
-	if (helper::is_bool(currOperand)) {
-
-		Boolean::value_type boolValue = value_of<Boolean>(currOperand);
-		Boolean::pointer_type boolOperand = std::make_shared<Boolean>(!boolValue);
-
-		opStack.push(boolOperand);
-
-	}
-	else {
-
-		throw std::exception("Invalid operand type for not.");
-
-	}
 
 }
 

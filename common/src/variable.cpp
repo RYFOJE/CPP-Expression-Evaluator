@@ -44,19 +44,3 @@ the program(s) have been supplied.
 		return Token::string_type("Variable: null");
 	return value_m->str();
 }
-
-namespace helper {
-
-	Variable::pointer_type make_variable(Operand::pointer_type const& value) {
-		Variable::pointer_type var = std::make_shared<Variable>();
-		var->set(value);
-		return var;
-	}
-	
-	[[nodiscard]] bool is_var_initialized(Variable::pointer_type var) {
-
-		return var->value() != nullptr;
-
-	};
-
-}

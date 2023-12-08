@@ -57,12 +57,3 @@ public:
 					void		set(Operand::pointer_type const& value) { value_m = value; }
 	[[nodiscard]]	string_type	str() const override;
 };
-
-namespace helper {
-
-	[[nodiscard]] bool is_var_initialized(Variable::pointer_type var);
-	Variable::pointer_type make_variable(Operand::pointer_type const& value);
-
-};
-
-

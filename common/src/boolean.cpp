@@ -47,18 +47,4 @@ Boolean::string_type Boolean::str() const {
 }
 
 
-namespace helper {
 
-	[[nodiscard]] bool is_bool(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs) {
-
-		return is<Boolean>(lhs) && is<Boolean>(rhs);
-
-	}
-	
-	[[nodiscard]] bool is_bool(Operand::pointer_type const& op) {
-
-		return is<Boolean>(op);
-
-	}
-	
-}
