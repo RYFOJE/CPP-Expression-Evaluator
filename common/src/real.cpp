@@ -56,18 +56,10 @@ the program(s) have been supplied.
 #include <sstream>
 using namespace std;
 
-/*
+
 namespace helper {
 
-	[[nodiscard]] bool is_integer(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs) {
-		return (is<Integer>(lhs) || is<Integer>(rhs));
-	}
-
-	[[nodiscard]] bool is_integer(Operand::pointer_type const& op) {
-		return is<Integer>(op);
-	}
-
-	Real::pointer_type get_as_real(Operand::pointer_type operand) {
+	[[nodiscard]] static Real::pointer_type get_as_real(Operand::pointer_type operand) {
 
 		if (is<Real>(operand)) {
 			Real::value_type value = value_of<Real>(operand);
@@ -85,34 +77,7 @@ namespace helper {
 
 	}
 
-	Real::pointer_type get_as_real(Integer* operand) {
-
-		Real converted(operand->str());
-		return make_real<Real>(converted.value());
-
-		throw std::runtime_error("Error: Wrong data type used with get_as_real");
-
-	}
-
-	Real::pointer_type get_as_real(Operand::pointer_type operand) {
-
-		if (is<Real>(operand)) {
-			Real::value_type value = value_of<Real>(operand);
-			return make_real<Real>(value);
-		}
-
-		else if (is<Integer>(operand)) {
-
-			Real converted(operand->str());
-			return make_real<Real>(converted.value());
-
-		}
-
-		throw std::runtime_error("Error: Wrong data type used with get_as_real");
-
-	}
-
-	Real::pointer_type get_as_real(Integer* operand) {
+	[[nodiscard]] static Real::pointer_type get_as_real(Integer* operand) {
 
 		Real converted(operand->str());
 		return make_real<Real>(converted.value());
@@ -123,33 +88,12 @@ namespace helper {
 
 }
 
-*/
 
 [[nodiscard]] Real::string_type Real::str() const {
 	ostringstream oss;
 	oss << /*"Real: " << */fixed << setprecision(numeric_limits<value_type>::digits10) << value_;
 	return oss.str();
 }
-
-
-//Real::pointer_type get_as_real(Operand::pointer_type operand) {
-//
-//	if (is<Real>(operand)) {
-//		Real::value_type value = value_of<Real>(operand);
-//		return make_real<Real>(value);
-//	}
-//
-//	else if (is<Integer>(operand)) {
-//
-//		Real converted(operand->str());
-//		return make_real<Real>(converted.value());
-//
-//	}
-//
-//	throw std::runtime_error("Error: Wrong data type used with get_as_real");
-//
-//}
-
 
 void Real::perform_addition(operand_stack_type& opStack) {
 	Operand::pointer_type lhs = opStack.top();

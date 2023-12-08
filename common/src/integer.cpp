@@ -52,6 +52,7 @@ the program(s) have been supplied.
 #include <ee/boolean.hpp>
 #include <ee/real.hpp>
 #include <array>
+
 using namespace std;
 
 namespace helper {
@@ -64,25 +65,25 @@ namespace helper {
 		return is<Integer>(op);
 	}
 
-	//Real::pointer_type get_as_real(Operand::pointer_type operand) {
+	[[nodiscard]] static Real::pointer_type get_as_real(Operand::pointer_type operand) {
 
-	//	if (is<Real>(operand)) {
-	//		Real::value_type value = value_of<Real>(operand);
-	//		return make_real<Real>(value);
-	//	}
+		if (is<Real>(operand)) {
+			Real::value_type value = value_of<Real>(operand);
+			return make_real<Real>(value);
+		}
 
-	//	else if (is<Integer>(operand)) {
+		else if (is<Integer>(operand)) {
 
-	//		Real converted(operand->str());
-	//		return make_real<Real>(converted.value());
+			Real converted(operand->str());
+			return make_real<Real>(converted.value());
 
-	//	}
+		}
 
-	//	throw std::runtime_error("Error: Wrong data type used with get_as_real");
+		throw std::runtime_error("Error: Wrong data type used with get_as_real");
 
-	//}
+	}
 
-	Real::pointer_type get_as_real(Integer* operand) {
+	[[nodiscard]] static Real::pointer_type get_as_real(Integer* operand) {
 
 		Real converted(operand->str());
 		return make_real<Real>(converted.value());
@@ -125,3 +126,29 @@ void Integer::perform_multiplication(operand_stack_type& opStack) {};
 void Integer::perform_division(operand_stack_type& opStack) {};
 void Integer::perform_modulus(operand_stack_type& opStack) {};
 void Integer::perform_power(operand_stack_type& opStack) {};
+
+void Integer::perform_equality(operand_stack_type& opStack) {};
+void Integer::perform_negation(operand_stack_type& opStack) {
+
+	Integer::value_type realValue = this->value();
+	opStack.push(std::make_shared<Integer>(-realValue));
+
+};
+void Integer::perform_not(operand_stack_type& opStack) {};
+void Integer::perform_factorial(operand_stack_type& opStack) {
+	
+	// Get the numerical value and create a value to hold the running total
+	Integer::value_type amount = this->value_;
+	Integer::value_type runningTotal(1);
+
+	// Perform the factorial calculation
+	for (int i = 1; i <= amount; i++) {
+
+		runningTotal *= i;
+
+	}
+
+	// Create an operand with the given value and add it to the operand stack
+	opStack.push(make_operand<Integer>(runningTotal));
+
+};

@@ -79,8 +79,12 @@ public:
 	virtual void perform_division(operand_stack_type& opStack) override;
 	virtual void perform_modulus(operand_stack_type& opStack) override;
 	virtual void perform_power(operand_stack_type& opStack) override;
-	
 
+	virtual void perform_equality(operand_stack_type& opStack) override;
+	virtual void perform_negation(operand_stack_type& opStack) override;
+	virtual void perform_not(operand_stack_type& opStack) override;
+	virtual void perform_factorial(operand_stack_type& opStack) override;
+	
 };
 
 /*! Make a new smart-pointer managed Token object with constructor parameter. */

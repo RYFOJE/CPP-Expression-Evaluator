@@ -69,13 +69,19 @@ public:
 	using operand_stack_type = std::stack<Operand::pointer_type>;
 
 	virtual void perform_addition(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
-	virtual void perform_subtraction(operand_stack_type& opStack)		{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
-	virtual void perform_multiplication(operand_stack_type& opStack)	{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
-	virtual void perform_division(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
-	virtual void perform_modulus(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
-	virtual void perform_power(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
+	virtual void perform_subtraction(operand_stack_type& opStack)		{ throw std::runtime_error("Error: perform subtraction not supported for this datatype"); };
+	virtual void perform_multiplication(operand_stack_type& opStack)	{ throw std::runtime_error("Error: perform multiplication not supported for this datatype"); };
+	virtual void perform_division(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform division not supported for this datatype"); };
+	virtual void perform_modulus(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform modulus not supported for this datatype"); };
+	virtual void perform_power(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform power not supported for this datatype"); };
 	
 
+	virtual void perform_equality(operand_stack_type& opStack) { throw std::runtime_error("Error: perform equality not supported for this datatype"); };
+	virtual void perform_negation(operand_stack_type& opStack) { throw std::runtime_error("Error: perform negation not supported for this datatype"); };
+	virtual void perform_not(operand_stack_type& opStack) { throw std::runtime_error("Error: perform not not supported for this datatype"); };
+	virtual void perform_factorial(operand_stack_type& opStack) { throw std::runtime_error("Error: perform factorial not supported for this datatype"); };
+	
+	
 };
 
 
