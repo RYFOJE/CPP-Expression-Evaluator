@@ -74,8 +74,8 @@ namespace helper {
 
 		else if (is<Integer>(operand)) {
 
-			Real converted(operand->str());
-			return make_real<Real>(converted.value());
+			Integer::pointer_type converted = convert<Integer>(operand);
+			return make_real<Real>(converted->value().convert_to<Real::value_type>());
 
 		}
 
@@ -129,18 +129,39 @@ void Integer::perform_subtraction(operand_stack_type& opStack) {
 
 	if (helper::is_integer(lhs)) {
 
-		result = make_operand<Integer>(value_of<Integer>(lhs) + this->value_);
+		result = make_operand<Integer>(value_of<Integer>(lhs) - this->value_);
 
 	}
 
 	else if (helper::is_real(lhs))
-		result = make_operand<Real>(value_of<Real>(lhs) + value_of<Real>(helper::get_as_real(this)));
+		result = make_operand<Real>(value_of<Real>(lhs) - value_of<Real>(helper::get_as_real(this)));
 
 	else
 		throw std::runtime_error("Invalid operand type for addition.");
 
+	opStack.push(result);
+
 };
-void Integer::perform_multiplication(operand_stack_type& opStack) {};
+void Integer::perform_multiplication(operand_stack_type& opStack) {
+
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	Operand::pointer_type result;
+
+	if (helper::is_integer(lhs))
+		result = make_operand<Integer>(value_of<Integer>(lhs) * this->value_);
+
+	else if (helper::is_real(lhs))
+		result = make_operand<Real>(value_of<Real>(lhs) * value_of<Real>(helper::get_as_real(this)));
+
+	else
+		throw std::runtime_error("Invalid operand type for addition.");
+
+	opStack.push(result);
+
+};
+
 void Integer::perform_division(operand_stack_type& opStack) {
 
 	// Prevent division by zero
@@ -168,7 +189,26 @@ void Integer::perform_division(operand_stack_type& opStack) {
 	opStack.push(result);
 
 };
-void Integer::perform_modulus(operand_stack_type& opStack) {};
+void Integer::perform_modulus(operand_stack_type& opStack) {
+
+	// Get the left operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	Operand::pointer_type result;
+
+	// Check to see if the correct datatype has been passed
+	if (helper::is_integer(lhs)) {
+		result = make_operand<Integer>(value_of<Integer>(lhs) % this->value_);
+	}
+
+	else
+		throw std::runtime_error("Invalid operand type for addition.");
+
+	opStack.push(result);
+
+};
+
 void Integer::perform_power(operand_stack_type& opStack) {};
 
 void Integer::perform_equality(operand_stack_type& opStack) {};

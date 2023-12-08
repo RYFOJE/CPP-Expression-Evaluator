@@ -106,28 +106,6 @@ void Division::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	rhs->perform_division(opStack);
 
-	//// Get the left operand
-	//Operand::pointer_type lhs = opStack.top();
-	//opStack.pop();
-
-	//// TODO FIX THIS AS IT DOES NOT WORK WITH MIXED DATA TYPES
-	//if (helper::is_real(lhs, rhs)) {
-
-	//	// Convert both to real and make sure they are
-
-	//	Real::value_type rhsValue = value_of<Real>(helper::get_as_real(rhs));
-	//	Real::value_type lhsValue = value_of<Real>(helper::get_as_real(lhs));
-	//	opStack.push(make_operand<Real>(lhsValue / rhsValue));
-	//}
-
-	//else {
-
-	//	Integer::value_type rhsValue = value_of<Integer>(rhs);
-	//	Integer::value_type lhsValue = value_of<Integer>(lhs);
-	//	opStack.push(make_operand<Integer>(lhsValue / rhsValue));
-
-	//}
-
 }
 
 void Equality::perform(std::stack<Operand::pointer_type>& opStack) const {
