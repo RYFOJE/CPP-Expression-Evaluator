@@ -62,11 +62,11 @@ using namespace std;
 
 namespace helper {
 
-	[[nodiscard]] inline bool is_integer(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs) {
+	[[nodiscard]] bool is_integer(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs) {
 		return (is<Integer>(lhs) || is<Integer>(rhs));
 	}
 
-	[[nodiscard]] inline bool is_integer(Operand::pointer_type const& op) {
+	[[nodiscard]] bool is_integer(Operand::pointer_type const& op) {
 		return is<Integer>(op);
 	}
 

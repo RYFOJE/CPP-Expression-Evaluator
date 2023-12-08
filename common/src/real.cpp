@@ -65,7 +65,7 @@ using namespace std;
 
 namespace helper {
 
-	[[nodiscard]] inline bool is_real(Operand::pointer_type lhs, Operand::pointer_type rhs) {
+	[[nodiscard]] bool is_real(Operand::pointer_type lhs, Operand::pointer_type rhs) {
 		return (is<Real>(lhs) || is<Real>(rhs));
 	}
 	

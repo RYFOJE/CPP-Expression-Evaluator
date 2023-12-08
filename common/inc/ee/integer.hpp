@@ -79,8 +79,8 @@ template <typename T, class... Args> inline Integer::pointer_type [[nodiscard]] 
 
 namespace helper {
 
-	[[nodiscard]] inline bool is_integer(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs);
-	[[nodiscard]] inline bool is_integer(Operand::pointer_type const& op);
+	[[nodiscard]] bool is_integer(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs);
+	[[nodiscard]] bool is_integer(Operand::pointer_type const& op);
 	
 
 }

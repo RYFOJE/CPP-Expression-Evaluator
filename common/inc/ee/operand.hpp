@@ -65,6 +65,7 @@ class Operand : public Token {
 public:
 	DEF_POINTER_TYPE(Operand)
 	using operand_list_type = std::deque<Operand::pointer_type>;
+
 };
 
 
@@ -84,5 +85,4 @@ typename OPERAND_TYPE::value_type [[nodiscard]] value_of(Token::pointer_type con
 
 /*!	Type for a list of operands. */
 using OperandList = Operand::operand_list_type;
-
 
