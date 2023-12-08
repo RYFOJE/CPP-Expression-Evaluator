@@ -132,23 +132,23 @@ namespace helper {
 }
 
 
-Real::pointer_type get_as_real(Operand::pointer_type operand) {
-
-	if (is<Real>(operand)) {
-		Real::value_type value = value_of<Real>(operand);
-		return make_real<Real>(value);
-	}
-
-	else if (is<Integer>(operand)) {
-
-		Real converted(operand->str());
-		return make_real<Real>(converted.value());
-
-	}
-
-	throw std::runtime_error("Error: Wrong data type used with get_as_real");
-
-}
+//Real::pointer_type get_as_real(Operand::pointer_type operand) {
+//
+//	if (is<Real>(operand)) {
+//		Real::value_type value = value_of<Real>(operand);
+//		return make_real<Real>(value);
+//	}
+//
+//	else if (is<Integer>(operand)) {
+//
+//		Real converted(operand->str());
+//		return make_real<Real>(converted.value());
+//
+//	}
+//
+//	throw std::runtime_error("Error: Wrong data type used with get_as_real");
+//
+//}
 
 
 void Real::perform_addition(operand_stack_type& opStack) {

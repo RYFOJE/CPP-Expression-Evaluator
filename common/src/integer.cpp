@@ -64,23 +64,23 @@ namespace helper {
 		return is<Integer>(op);
 	}
 
-	Real::pointer_type get_as_real(Operand::pointer_type operand) {
+	//Real::pointer_type get_as_real(Operand::pointer_type operand) {
 
-		if (is<Real>(operand)) {
-			Real::value_type value = value_of<Real>(operand);
-			return make_real<Real>(value);
-		}
+	//	if (is<Real>(operand)) {
+	//		Real::value_type value = value_of<Real>(operand);
+	//		return make_real<Real>(value);
+	//	}
 
-		else if (is<Integer>(operand)) {
+	//	else if (is<Integer>(operand)) {
 
-			Real converted(operand->str());
-			return make_real<Real>(converted.value());
+	//		Real converted(operand->str());
+	//		return make_real<Real>(converted.value());
 
-		}
+	//	}
 
-		throw std::runtime_error("Error: Wrong data type used with get_as_real");
+	//	throw std::runtime_error("Error: Wrong data type used with get_as_real");
 
-	}
+	//}
 
 	Real::pointer_type get_as_real(Integer* operand) {
 
@@ -119,6 +119,7 @@ void Integer::perform_addition(operand_stack_type& opStack) {
 
 	
 };
+
 void Integer::perform_subtraction(operand_stack_type& opStack) {};
 void Integer::perform_multiplication(operand_stack_type& opStack) {};
 void Integer::perform_division(operand_stack_type& opStack) {};

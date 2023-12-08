@@ -114,40 +114,6 @@ void Addition::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 }
 
-//[[nodiscard]] Operand::pointer_type addition_perform(Real::pointer_type const &lhs, Real::pointer_type const &rhs) {
-//
-//	Real::value_type rhsValue = value_of<Real>(rhs);
-//	Real::value_type lhsValue = value_of<Real>(lhs);
-//	return make_operand<Real>(lhsValue + rhsValue);
-//
-//}
-//
-////[[nodiscard]] Operand::pointer_type addition_perform(Real::pointer_type const &lhs, Integer::pointer_type const &rhs) {
-////
-////	Real::value_type rhsValue = value_of<Real>(rhs);
-////	Integer::value_type lhsValue = value_of<Integer>(lhs);
-////	return make_operand<Real>(lhsValue + rhsValue);
-////
-////}
-////
-////[[nodiscard]] Operand::pointer_type addition_perform(Integer::pointer_type const &lhs, Real::pointer_type const &rhs) {
-////
-////	Integer::value_type rhsValue = value_of<Integer>(rhs);
-////	Real::value_type lhsValue = value_of<Real>(lhs);
-////	return make_operand<Real>(lhsValue + rhsValue);
-////
-////}
-//
-//[[nodiscard]] Operand::pointer_type addition_perform(Integer::pointer_type lhs, Integer::pointer_type rhs) {
-//
-//	Real::value_type rhsValue = value_of<Real>(rhs);
-//	Real::value_type lhsValue = value_of<Real>(lhs);
-//	return make_operand<Integer>(lhsValue + rhsValue);
-//
-//}
-
-
-
 void And::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	// Get the right operand
