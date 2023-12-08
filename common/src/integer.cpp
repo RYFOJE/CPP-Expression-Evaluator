@@ -54,12 +54,6 @@ the program(s) have been supplied.
 #include <array>
 using namespace std;
 
-
-
-[[nodiscard]] Integer::string_type Integer::str() const {
-	return value().str();
-}
-
 namespace helper {
 
 	[[nodiscard]] bool is_integer(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs) {
@@ -70,4 +64,63 @@ namespace helper {
 		return is<Integer>(op);
 	}
 
+	Real::pointer_type get_as_real(Operand::pointer_type operand) {
+
+		if (is<Real>(operand)) {
+			Real::value_type value = value_of<Real>(operand);
+			return make_real<Real>(value);
+		}
+
+		else if (is<Integer>(operand)) {
+
+			Real converted(operand->str());
+			return make_real<Real>(converted.value());
+
+		}
+
+		throw std::runtime_error("Error: Wrong data type used with get_as_real");
+
+	}
+
+	Real::pointer_type get_as_real(Integer* operand) {
+
+		Real converted(operand->str());
+		return make_real<Real>(converted.value());
+
+		throw std::runtime_error("Error: Wrong data type used with get_as_real");
+
+	}
+
 }
+
+
+[[nodiscard]] Integer::string_type Integer::str() const {
+	return value().str();
+}
+
+
+void Integer::perform_addition(operand_stack_type& opStack) {
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	Operand::pointer_type result;
+
+	if (helper::is_integer(lhs)) {
+
+		result = make_operand<Integer>(value_of<Integer>(lhs) + this->value_);
+
+	}
+	
+	else if (is<Real>(lhs))
+		result = make_operand<Real>(value_of<Real>(lhs) + value_of<Real>(helper::get_as_real(this)));
+
+	else
+		throw std::runtime_error("Invalid operand type for addition.");
+
+	
+};
+void Integer::perform_subtraction(operand_stack_type& opStack) {};
+void Integer::perform_multiplication(operand_stack_type& opStack) {};
+void Integer::perform_division(operand_stack_type& opStack) {};
+void Integer::perform_modulus(operand_stack_type& opStack) {};
+void Integer::perform_power(operand_stack_type& opStack) {};

@@ -70,6 +70,17 @@ public:
 	[[nodiscard]]	value_type	value() const { return value_; }
 	[[nodiscard]]	string_type	str() const override;
 
+
+	// OPERATORS
+
+	virtual void perform_addition(operand_stack_type& opStack) override;
+	virtual void perform_subtraction(operand_stack_type& opStack) override;
+	virtual void perform_multiplication(operand_stack_type& opStack) override;
+	virtual void perform_division(operand_stack_type& opStack) override;
+	virtual void perform_modulus(operand_stack_type& opStack) override;
+	virtual void perform_power(operand_stack_type& opStack) override;
+	
+
 };
 
 /*! Make a new smart-pointer managed Token object with constructor parameter. */

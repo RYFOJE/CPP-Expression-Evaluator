@@ -59,12 +59,22 @@ the program(s) have been supplied.
 #include <ee/token.hpp>
 #include <cassert>
 #include <deque>
+#include <stack>
 
 /*! Operand token base class. */
 class Operand : public Token {
 public:
 	DEF_POINTER_TYPE(Operand)
 	using operand_list_type = std::deque<Operand::pointer_type>;
+	using operand_stack_type = std::stack<Operand::pointer_type>;
+
+	virtual void perform_addition(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
+	virtual void perform_subtraction(operand_stack_type& opStack)		{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
+	virtual void perform_multiplication(operand_stack_type& opStack)	{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
+	virtual void perform_division(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
+	virtual void perform_modulus(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
+	virtual void perform_power(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
+	
 
 };
 

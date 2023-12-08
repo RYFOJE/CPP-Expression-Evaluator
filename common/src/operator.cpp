@@ -50,32 +50,31 @@ the program(s) have been supplied.
 
 #include <iostream>
 
-Real::pointer_type get_as_real(Operand::pointer_type operand) {
 
-	if (is<Real>(operand)) {
-		Real::value_type value = value_of<Real>(operand);
-		return make_real<Real>(value);
+namespace helper {
+	Real::pointer_type get_as_real(Operand::pointer_type operand) {
+
+		if (is<Real>(operand)) {
+			Real::value_type value = value_of<Real>(operand);
+			return make_real<Real>(value);
+		}
+
+		else if (is<Integer>(operand)) {
+
+			Real converted(operand->str());
+			return make_real<Real>(converted.value());
+
+		}
+
+		throw std::runtime_error("Error: Wrong data type used with get_as_real");
+
 	}
-
-	else if (is<Integer>(operand)) {
-
-		Real converted(operand->str());
-		return make_real<Real>(converted.value());
-
-	}
-
-	throw std::runtime_error("Error: Wrong data type used with get_as_real");
-
 }
 
 void Power::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	// Get the right operand
-	Operand::pointer_type rhs = opStack.top();
-	opStack.pop();
-
-	// Get the left operand
-	Operand::pointer_type lhs = opStack.top();
+	Operand::pointer_type op = opStack.top();
 	opStack.pop();
 
 }
@@ -100,8 +99,8 @@ void Addition::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 		// Convert both to real and make sure they are
 
-		Real::value_type rhsValue = value_of<Real>(get_as_real(rhs));
-		Real::value_type lhsValue = value_of<Real>(get_as_real(lhs));
+		Real::value_type rhsValue = value_of<Real>(helper::get_as_real(rhs));
+		Real::value_type lhsValue = value_of<Real>(helper::get_as_real(lhs));
 		opStack.push(make_operand<Real>(lhsValue + rhsValue));
 	}
 
@@ -188,8 +187,8 @@ void Division::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 		// Convert both to real and make sure they are
 
-		Real::value_type rhsValue = value_of<Real>(get_as_real(rhs));
-		Real::value_type lhsValue = value_of<Real>(get_as_real(lhs));
+		Real::value_type rhsValue = value_of<Real>(helper::get_as_real(rhs));
+		Real::value_type lhsValue = value_of<Real>(helper::get_as_real(lhs));
 		opStack.push(make_operand<Real>(lhsValue / rhsValue));
 	}
 
@@ -272,8 +271,8 @@ void Multiplication::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 		// Convert both to real and make sure they are
 
-		Real::value_type rhsValue = value_of<Real>(get_as_real(rhs));
-		Real::value_type lhsValue = value_of<Real>(get_as_real(lhs));
+		Real::value_type rhsValue = value_of<Real>(helper::get_as_real(rhs));
+		Real::value_type lhsValue = value_of<Real>(helper::get_as_real(lhs));
 		opStack.push(make_operand<Real>(lhsValue * rhsValue));
 	}
 
@@ -359,8 +358,8 @@ void Subtraction::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 		// Convert both to real and make sure they are
 
-		Real::value_type rhsValue = value_of<Real>(get_as_real(rhs));
-		Real::value_type lhsValue = value_of<Real>(get_as_real(lhs));
+		Real::value_type rhsValue = value_of<Real>(helper::get_as_real(rhs));
+		Real::value_type lhsValue = value_of<Real>(helper::get_as_real(lhs));
 		opStack.push(make_operand<Real>(lhsValue - rhsValue));
 	}
 
