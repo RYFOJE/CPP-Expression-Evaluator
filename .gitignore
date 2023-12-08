@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/gats/_src/win32/ConsoleCore.cpp
+/gats/_src/win32/ConsoleEnhanced.cpp
+/gats/_src/win32/ConsoleCore.cpp
+/gats/_src/win32/XError.cpp
+/gats/_src/win32/ConsoleEnhanced.cpp
