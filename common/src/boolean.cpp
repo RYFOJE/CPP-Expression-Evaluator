@@ -186,6 +186,24 @@ void Boolean::perform_xnor(operand_stack_type& opStack) {
 }
 
 
+void Boolean::perform_inequality(operand_stack_type& opStack) {
+
+	// Get the right operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+
+	if (is<Boolean>(lhs)) {
+
+		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
+		opStack.push(make_operand<Boolean>(lhsValue != this->value_));
+
+	}
+	else {
+		// Throw an exception
+		throw std::exception("Invalid operand type for negation.");
+	}
+}
 void Boolean::perform_equality(operand_stack_type& opStack) {
 
 	// Get the right operand
