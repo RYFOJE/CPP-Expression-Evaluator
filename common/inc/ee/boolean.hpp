@@ -70,6 +70,7 @@ public:
 
 	virtual void perform_inequality(operand_stack_type& opStack) override;
 	virtual void perform_equality(operand_stack_type& opStack) override;
+	virtual void perform_greater_equal(operand_stack_type& opStack) override;
 	virtual void perform_greater(operand_stack_type& opStack) override;
 	virtual void perform_less(operand_stack_type& opStack) override;
 	virtual void perform_less_equal(operand_stack_type& opStack) override;
