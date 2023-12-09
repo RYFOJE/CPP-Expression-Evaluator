@@ -217,7 +217,7 @@ void Integer::perform_power(operand_stack_type& opStack) {
 	// Anything to the power of 0 is 1
 	if (this->value_ == 0)
 		result = make_integer<Integer>(1); 
-
+	// TODO ADD HANDLING FOR NEGATIVE EXPONENTS (1 / (base ^ abs(exponent))) IT MUST RETURN A REAL
 	
 	if (helper::is_integer(lhs)){
 

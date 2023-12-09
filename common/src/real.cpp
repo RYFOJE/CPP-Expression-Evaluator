@@ -111,19 +111,16 @@ void Real::perform_negation(operand_stack_type& opStack) {
 };
 void Real::perform_addition(operand_stack_type& opStack) {
 	Operand::pointer_type lhs = opStack.top();
+	
 	opStack.pop();
 
 	Operand::pointer_type result;
 
-	if (is<Real>(lhs))
-		result = make_operand<Real>(value_of<Real>(lhs) + this->value_);
-
-	else if (is<Real>(lhs))
-		result = make_operand<Real>(value_of<Real>(lhs) + this->value_);
-
-	else
+	if (!(is<Real>(lhs) || is<Integer>(lhs)))
 		throw std::runtime_error("Invalid operand type for addition.");
-
+	
+	Real::pointer_type lhs_real = helper::get_as_real(lhs);
+	result = make_operand<Real>(value_of<Real>(lhs_real) + this->value_);
 	opStack.push(result);
 
 };
@@ -151,7 +148,6 @@ void Real::perform_multiplication(operand_stack_type& opStack) {
 		throw std::runtime_error("Invalid operand type for subtraction.");
 
 	Real::pointer_type lhs_real = helper::get_as_real(lhs);
-
 	opStack.push(make_real<Real>(value_of<Real>(lhs_real) * this->value_));
 
 };
