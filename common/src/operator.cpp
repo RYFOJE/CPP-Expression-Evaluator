@@ -50,6 +50,48 @@ the program(s) have been supplied.
 
 #include <iostream>
 
+
+[[nodiscard]] static Real::pointer_type get_as_real(Operand::pointer_type operand) {
+
+		if (is<Real>(operand)) {
+			Real::value_type value = value_of<Real>(operand);
+			return make_real<Real>(value);
+		}
+
+		else if (is<Integer>(operand)) {
+
+			Real converted(operand->str());
+			return make_real<Real>(converted.value());
+
+		}
+
+		throw std::runtime_error("Error: Wrong data type used with get_as_real");
+
+	}
+
+[[nodiscard]] Operator::pointer_type get_operator(Operand::operand_stack_type& opStack) {
+
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	Operand::pointer_type newLhs;
+	Operand::pointer_type newRhs;
+
+	if (is<Real>(lhs) || is<Real>(rhs) ){
+		newLhs = make_operand<Real>(get_as_real(lhs));
+		newRhs = make_operand<Real>(get_as_real(rhs));
+	}
+
+	else {
+		newLhs = lhs;
+		newRhs = rhs;
+	}
+
+}
+
+
 void Power::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	// Get the right operand
