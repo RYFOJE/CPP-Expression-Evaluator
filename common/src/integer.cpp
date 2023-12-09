@@ -218,6 +218,9 @@ void Integer::perform_power(operand_stack_type& opStack) {
 	if (this->value_ == 0)
 		result = make_integer<Integer>(1); 
 	// TODO ADD HANDLING FOR NEGATIVE EXPONENTS (1 / (base ^ abs(exponent))) IT MUST RETURN A REAL
+	if (this->value_ < 0)
+		throw std::runtime_error("Error: Negative exponents are not supported.");
+
 	
 	if (helper::is_integer(lhs)){
 
