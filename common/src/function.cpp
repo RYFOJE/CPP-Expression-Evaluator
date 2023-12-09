@@ -51,76 +51,190 @@ the program(s) have been supplied.
 
 void Abs::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_abs(opStack);
+
 }
 
 void Arccos::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_arccos(opStack);
 
 }
 
 void Arcsin::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_arcsin(opStack);
+
 }
 
 void Arctan::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_arctan(opStack);
 
 }
 
 void Ceil::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_ceil(opStack);
+
 }
 
 void Cos::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_cos(opStack);
+	
 }
 
 void Exp::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_exp(opStack);
 
 }
 
 void Floor::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_floor(opStack);
+	
 }
 
 void Lb::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_lb(opStack);
+	
 }
 
 void Ln::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_ln(opStack);
 
 }
 
 void Log::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_log(opStack);
+	
 }
 
 void Result::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_result(opStack);
 
 }
 
 void Sin::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_sin(opStack);
+
 }
 
 void Sqrt::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_sqrt(opStack);
 
 }
 
 void Tan::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_tan(opStack);
+
 }
 
 void Arctan2::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_arctan2(opStack);
 
 }
 
 void Max::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_max(opStack);
+	
 }
 
 void Min::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_min(opStack);
+
 }
 
 void Pow::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_pow(opStack);
 
 }

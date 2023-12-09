@@ -54,6 +54,9 @@ the program(s) have been supplied.
 #include <cmath>
 #include <iomanip>
 #include <sstream>
+
+#include <iostream>
+
 using namespace std;
 
 [[nodiscard]] Real::string_type Real::str() const {
@@ -190,4 +193,82 @@ void Real::perform_power(operand_stack_type& opStack) {
 	
 };
 
+void Real::perform_abs(operand_stack_type& opStack) {
 
+	opStack.push(make_real<Real>(abs(this->value_)));
+
+};
+void Real::perform_arccos(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(acos(this->value_)));
+
+};
+void Real::perform_arcsin(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(asin(this->value_)));
+
+};
+void Real::perform_arctan(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(atan(this->value_)));
+
+};
+void Real::perform_ceil(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(ceil(this->value_)));
+
+};
+void Real::perform_cos(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(cos(this->value_)));
+
+};
+void Real::perform_exp(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(exp(this->value_)));
+	
+};
+void Real::perform_floor(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(floor(this->value_)));
+
+};
+void Real::perform_lb(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(log2(this->value_)));
+
+};
+void Real::perform_ln(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(log(this->value_)));
+	
+};
+void Real::perform_log(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(log(this->value_)));
+
+};
+void Real::perform_result(operand_stack_type& opStack) {};
+void Real::perform_sin(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(sin(this->value_)));
+
+};
+void Real::perform_sqrt(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(sqrt(this->value_)));
+	
+};
+void Real::perform_tan(operand_stack_type& opStack) {
+
+	opStack.push(make_real<Real>(tan(this->value_)));
+
+};
+void Real::perform_arctan2(operand_stack_type& opStack) {
+
+
+
+};
+void Real::perform_max(operand_stack_type& opStack) {};
+void Real::perform_min(operand_stack_type& opStack) {};
+void Real::perform_pow(operand_stack_type& opStack) {};

@@ -68,20 +68,41 @@ public:
 	using operand_list_type = std::deque<Operand::pointer_type>;
 	using operand_stack_type = std::stack<Operand::pointer_type>;
 
+
+	// OPERATORS
 	virtual void perform_addition(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
 	virtual void perform_subtraction(operand_stack_type& opStack)		{ throw std::runtime_error("Error: perform subtraction not supported for this datatype"); };
 	virtual void perform_multiplication(operand_stack_type& opStack)	{ throw std::runtime_error("Error: perform multiplication not supported for this datatype"); };
 	virtual void perform_division(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform division not supported for this datatype"); };
 	virtual void perform_modulus(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform modulus not supported for this datatype"); };
 	virtual void perform_power(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform power not supported for this datatype"); };
-	
-
 	virtual void perform_equality(operand_stack_type& opStack) { throw std::runtime_error("Error: perform equality not supported for this datatype"); };
 	virtual void perform_negation(operand_stack_type& opStack) { throw std::runtime_error("Error: perform negation not supported for this datatype"); };
 	virtual void perform_not(operand_stack_type& opStack) { throw std::runtime_error("Error: perform not not supported for this datatype"); };
 	virtual void perform_factorial(operand_stack_type& opStack) { throw std::runtime_error("Error: perform factorial not supported for this datatype"); };
 	
-	
+
+	// FUNCTIONS
+	virtual void perform_abs(operand_stack_type& opStack) { throw std::runtime_error("Error: perform abs not supported for this datatype"); };
+	virtual void perform_arccos(operand_stack_type& opStack) { throw std::runtime_error("Error: perform arccos not supported for this datatype"); };
+	virtual void perform_arcsin(operand_stack_type& opStack) { throw std::runtime_error("Error: perform arcsin not supported for this datatype"); };
+	virtual void perform_arctan(operand_stack_type& opStack) { throw std::runtime_error("Error: perform arctan not supported for this datatype"); };
+	virtual void perform_ceil(operand_stack_type& opStack) { throw std::runtime_error("Error: perform ceil not supported for this datatype"); };
+	virtual void perform_cos(operand_stack_type& opStack) { throw std::runtime_error("Error: perform cos not supported for this datatype"); };
+	virtual void perform_exp(operand_stack_type& opStack) { throw std::runtime_error("Error: perform exp not supported for this datatype"); };
+	virtual void perform_floor(operand_stack_type& opStack) { throw std::runtime_error("Error: perform floor not supported for this datatype"); };
+	virtual void perform_lb(operand_stack_type& opStack) { throw std::runtime_error("Error: perform lb not supported for this datatype"); };
+	virtual void perform_ln(operand_stack_type& opStack) { throw std::runtime_error("Error: perform ln not supported for this datatype"); };
+	virtual void perform_log(operand_stack_type& opStack) { throw std::runtime_error("Error: perform log not supported for this datatype"); };
+	virtual void perform_result(operand_stack_type& opStack) { throw std::runtime_error("Error: perform result not supported for this datatype"); };
+	virtual void perform_sin(operand_stack_type& opStack) { throw std::runtime_error("Error: perform sin not supported for this datatype"); };
+	virtual void perform_sqrt(operand_stack_type& opStack) { throw std::runtime_error("Error: perform sqrt not supported for this datatype"); };
+	virtual void perform_tan(operand_stack_type& opStack) { throw std::runtime_error("Error: perform tan not supported for this datatype"); };
+	virtual void perform_arctan2(operand_stack_type& opStack) { throw std::runtime_error("Error: perform arctan2 not supported for this datatype"); };
+	virtual void perform_max(operand_stack_type& opStack) { throw std::runtime_error("Error: perform max not supported for this datatype"); };
+	virtual void perform_min(operand_stack_type& opStack) { throw std::runtime_error("Error: perform max not supported for this datatype"); };
+	virtual void perform_pow(operand_stack_type& opStack) { throw std::runtime_error("Error: perform min not supported for this datatype"); };
+
 };
 
 

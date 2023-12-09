@@ -79,11 +79,30 @@ public:
 	virtual void perform_division(operand_stack_type& opStack) override;
 	virtual void perform_modulus(operand_stack_type& opStack) override;
 	virtual void perform_power(operand_stack_type& opStack) override;
-
 	virtual void perform_equality(operand_stack_type& opStack) override;
 	virtual void perform_negation(operand_stack_type& opStack) override;
-	virtual void perform_not(operand_stack_type& opStack) override;
 	virtual void perform_factorial(operand_stack_type& opStack) override;
+
+	// FUNCTIONS
+	virtual void perform_abs(operand_stack_type& opStack) override;
+	//virtual void perform_arccos(operand_stack_type& opStack) override;
+	virtual void perform_arcsin(operand_stack_type& opStack) override;
+	virtual void perform_arctan(operand_stack_type& opStack) override;
+	virtual void perform_ceil(operand_stack_type& opStack) override;
+	virtual void perform_cos(operand_stack_type& opStack) override;
+	virtual void perform_exp(operand_stack_type& opStack) override;
+	virtual void perform_floor(operand_stack_type& opStack) override;
+	virtual void perform_lb(operand_stack_type& opStack) override;
+	virtual void perform_ln(operand_stack_type& opStack) override;
+	virtual void perform_log(operand_stack_type& opStack) override;
+	virtual void perform_result(operand_stack_type& opStack) override;
+	virtual void perform_sin(operand_stack_type& opStack) override;
+	virtual void perform_sqrt(operand_stack_type& opStack) override;
+	virtual void perform_tan(operand_stack_type& opStack) override;
+	virtual void perform_arctan2(operand_stack_type& opStack) override;
+	virtual void perform_max(operand_stack_type& opStack) override;
+	virtual void perform_min(operand_stack_type& opStack) override;
+	virtual void perform_pow(operand_stack_type& opStack) override;
 	
 };
 

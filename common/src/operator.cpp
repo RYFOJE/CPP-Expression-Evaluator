@@ -107,7 +107,6 @@ void Division::perform(std::stack<Operand::pointer_type>& opStack) const {
 	rhs->perform_division(opStack);
 
 }
-
 void Equality::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	// Get the right operand
@@ -143,27 +142,18 @@ void Equality::perform(std::stack<Operand::pointer_type>& opStack) const {
 	//}
 
 }
-
 void Greater::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 }
-
 void GreaterEqual::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 }
-
-void Inequality::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-}
-
+void Inequality::perform(std::stack<Operand::pointer_type>& opStack) const {}
 void Less::perform(std::stack<Operand::pointer_type>& opStack) const {
-
 }
-
 void LessEqual::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 }
-
 void Multiplication::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	// Get the right operand
@@ -195,7 +185,6 @@ void Multiplication::perform(std::stack<Operand::pointer_type>& opStack) const {
 	//}
 
 }
-
 void Modulus::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	// Get the right operand
@@ -222,15 +211,12 @@ void Modulus::perform(std::stack<Operand::pointer_type>& opStack) const {
 	//}
 
 }
-
 void Nand::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 }
-
 void Nor::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 }
-
 void Or::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	// Get the right operand
@@ -254,7 +240,6 @@ void Or::perform(std::stack<Operand::pointer_type>& opStack) const {
 	}
 
 }
-
 void Subtraction::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	// Get the right operand
@@ -286,19 +271,15 @@ void Subtraction::perform(std::stack<Operand::pointer_type>& opStack) const {
 	//}
 
 }
-
 void Xor::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 }
-
 void Xnor::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 }
-
 void Identity::perform(std::stack<Operand::pointer_type>& opStack) const {
 	//TODO Check to see if this is supposed to be empty
 }
-
 void Negation::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	// Get the top right operand
@@ -329,7 +310,6 @@ void Negation::perform(std::stack<Operand::pointer_type>& opStack) const {
 	//}
 
 }
-
 void Not::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	Operand::pointer_type op = opStack.top();
@@ -352,7 +332,6 @@ void Not::perform(std::stack<Operand::pointer_type>& opStack) const {
 	}*/
 
 }
-
 void Factorial::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	// Get the top right operand

@@ -53,6 +53,7 @@ the program(s) have been supplied.
 #include <ee/real.hpp>
 #include <array>
 
+
 using namespace std;
 
 namespace helper {
@@ -119,7 +120,6 @@ void Integer::perform_addition(operand_stack_type& opStack) {
 
 	opStack.push(result);
 };
-
 void Integer::perform_subtraction(operand_stack_type& opStack) {
 
 	Operand::pointer_type lhs = opStack.top();
@@ -161,7 +161,6 @@ void Integer::perform_multiplication(operand_stack_type& opStack) {
 	opStack.push(result);
 
 };
-
 void Integer::perform_division(operand_stack_type& opStack) {
 
 	// Prevent division by zero
@@ -208,7 +207,6 @@ void Integer::perform_modulus(operand_stack_type& opStack) {
 	opStack.push(result);
 
 };
-
 void Integer::perform_power(operand_stack_type& opStack) {
 
 	Operand::pointer_type lhs = opStack.top();
@@ -244,7 +242,6 @@ void Integer::perform_power(operand_stack_type& opStack) {
 
 	opStack.push(result);
 };
-
 void Integer::perform_equality(operand_stack_type& opStack) {};
 void Integer::perform_negation(operand_stack_type& opStack) {
 
@@ -252,7 +249,6 @@ void Integer::perform_negation(operand_stack_type& opStack) {
 	opStack.push(std::make_shared<Integer>(-realValue));
 
 };
-void Integer::perform_not(operand_stack_type& opStack) {};
 void Integer::perform_factorial(operand_stack_type& opStack) {
 	
 	// Get the numerical value and create a value to hold the running total
@@ -270,3 +266,34 @@ void Integer::perform_factorial(operand_stack_type& opStack) {
 	opStack.push(make_operand<Integer>(runningTotal));
 
 };
+
+
+void Integer::perform_abs(operand_stack_type& opStack) {
+
+	opStack.push(make_integer<Integer>(abs(this->value_)));
+	
+};
+//void Integer::perform_arccos(operand_stack_type& opStack) {
+//
+//	opStack.push(make_integer<Integer>(cos(this->value_)));
+//	
+//	boost::math::acos<Real::value_type>(Real::value_type(1.2));
+//
+//};
+void Integer::perform_arcsin(operand_stack_type& opStack) {};
+void Integer::perform_arctan(operand_stack_type& opStack) {};
+void Integer::perform_ceil(operand_stack_type& opStack) {};
+void Integer::perform_cos(operand_stack_type& opStack) {};
+void Integer::perform_exp(operand_stack_type& opStack) {};
+void Integer::perform_floor(operand_stack_type& opStack) {};
+void Integer::perform_lb(operand_stack_type& opStack) {};
+void Integer::perform_ln(operand_stack_type& opStack) {};
+void Integer::perform_log(operand_stack_type& opStack) {};
+void Integer::perform_result(operand_stack_type& opStack) {};
+void Integer::perform_sin(operand_stack_type& opStack) {};
+void Integer::perform_sqrt(operand_stack_type& opStack) {};
+void Integer::perform_tan(operand_stack_type& opStack) {};
+void Integer::perform_arctan2(operand_stack_type& opStack) {};
+void Integer::perform_max(operand_stack_type& opStack) {};
+void Integer::perform_min(operand_stack_type& opStack) {};
+void Integer::perform_pow(operand_stack_type& opStack) {};
