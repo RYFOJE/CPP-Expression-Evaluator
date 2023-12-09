@@ -267,6 +267,8 @@ void Min::perform(std::stack<Operand::pointer_type>& opStack) const {
 }
 void Pow::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	prepare_datatypes(opStack);
+
 	// Get the right operand
 	Operand::pointer_type rhs = opStack.top();
 	opStack.pop();

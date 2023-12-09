@@ -92,6 +92,10 @@ namespace helper {
 		throw std::runtime_error("Error: Wrong data type used with get_as_real");
 
 	}
+
+	[[nodiscard]] static Real::value_type int_to_real(Integer::value_type val) {
+		return val.convert_to<Real::value_type>();
+	}
 }
 
 
@@ -100,7 +104,7 @@ namespace helper {
 }
 
 
-void Integer::Integer::perform_addition(operand_stack_type& opStack) {
+void Integer::perform_addition(operand_stack_type& opStack) {
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
 
@@ -111,7 +115,7 @@ void Integer::Integer::perform_addition(operand_stack_type& opStack) {
 		throw std::runtime_error("Invalid operand type for addition.");
 
 };
-void Integer::Integer::perform_subtraction(operand_stack_type& opStack) {
+void Integer::perform_subtraction(operand_stack_type& opStack) {
 
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
@@ -123,7 +127,7 @@ void Integer::Integer::perform_subtraction(operand_stack_type& opStack) {
 		throw std::runtime_error("Invalid operand type for addition.");
 
 };
-void Integer::Integer::perform_multiplication(operand_stack_type& opStack) {
+void Integer::perform_multiplication(operand_stack_type& opStack) {
 
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
@@ -135,7 +139,7 @@ void Integer::Integer::perform_multiplication(operand_stack_type& opStack) {
 		throw std::runtime_error("Invalid operand type for addition.");
 
 };
-void Integer::Integer::perform_division(operand_stack_type& opStack) {
+void Integer::perform_division(operand_stack_type& opStack) {
 
 	// Prevent division by zero
 	if (this->value_ == 0)
@@ -152,7 +156,7 @@ void Integer::Integer::perform_division(operand_stack_type& opStack) {
 		throw std::runtime_error("Invalid operand type for addition.");
 
 };
-void Integer::Integer::perform_modulus(operand_stack_type& opStack) {
+void Integer::perform_modulus(operand_stack_type& opStack) {
 
 	// Get the left operand
 	Operand::pointer_type lhs = opStack.top();
@@ -168,11 +172,15 @@ void Integer::Integer::perform_modulus(operand_stack_type& opStack) {
 		throw std::runtime_error("Invalid operand type for addition.");
 
 };
-void Integer::Integer::perform_power(operand_stack_type& opStack) {
+void Integer::perform_power(operand_stack_type& opStack) {
 
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
 
+	if(!is<Integer>(lhs))
+		throw std::runtime_error("Invalid operand type for addition.");
+
+	
 	Operand::pointer_type result;
 	
 	// Anything to the power of 0 is 1
@@ -180,10 +188,26 @@ void Integer::Integer::perform_power(operand_stack_type& opStack) {
 		result = make_integer<Integer>(1); 
 	
 	// TODO ADD HANDLING FOR NEGATIVE EXPONENTS (1 / (base ^ abs(exponent))) IT MUST RETURN A REAL
-	if (this->value_ < 0)
-		throw std::runtime_error("Error: Negative exponents are not supported.");
+	if (this->value_ < 0) {
+
+		Integer::value_type exponent = abs(this->value_);
+		Integer::value_type currResult = 1;
+		Integer::value_type exp = exponent;
+		Integer::value_type curr_base = value_of<Integer>(lhs);
+
+		while (exp > 0) {
+			if (exp % 2 != 0) currResult *= curr_base;
+			exp /= 2;
+			curr_base *= curr_base;
+		}
+		
+		auto calculatedReal = Real::value_type(1) / helper::int_to_real(currResult);
+
+		result = make_operand<Real>(calculatedReal);
+
+	}
 	
-	if (helper::is_integer(lhs)){
+	else {
 
 		Integer::value_type exponent = this->value_;
 		Integer::value_type currResult = 1;
@@ -198,13 +222,10 @@ void Integer::Integer::perform_power(operand_stack_type& opStack) {
 
 		result = make_operand<Integer>(currResult);
 	}
-
-	else
-		throw std::runtime_error("Invalid operand type for addition.");
-
+		
 	opStack.push(result);
 };
-void Integer::Integer::perform_equality(operand_stack_type& opStack) {
+void Integer::perform_equality(operand_stack_type& opStack) {
 
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
@@ -222,7 +243,7 @@ void Integer::Integer::perform_equality(operand_stack_type& opStack) {
 	opStack.push(make_operand<Boolean>(calculatedValue));
 
 };
-void Integer::Integer::perform_inequality(operand_stack_type& opStack) {
+void Integer::perform_inequality(operand_stack_type& opStack) {
 
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
@@ -240,13 +261,13 @@ void Integer::Integer::perform_inequality(operand_stack_type& opStack) {
 	opStack.push(make_operand<Boolean>(calculatedValue));
 	
 };
-void Integer::Integer::perform_negation(operand_stack_type& opStack) {
+void Integer::perform_negation(operand_stack_type& opStack) {
 
 	Integer::value_type realValue = this->value();
 	opStack.push(std::make_shared<Integer>(-realValue));
 
 };
-void Integer::Integer::perform_factorial(operand_stack_type& opStack) {
+void Integer::perform_factorial(operand_stack_type& opStack) {
 	
 	// Get the numerical value and create a value to hold the running total
 	Integer::value_type amount = this->value_;
@@ -264,12 +285,13 @@ void Integer::Integer::perform_factorial(operand_stack_type& opStack) {
 
 };
 
-void Integer::Integer::perform_abs(operand_stack_type& opStack) {
+
+void Integer::perform_abs(operand_stack_type& opStack) {
 
 	opStack.push(make_integer<Integer>(abs(this->value_)));
 	
 };
-void Integer::Integer::perform_max(operand_stack_type& opStack) {
+void Integer::perform_max(operand_stack_type& opStack) {
 
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
@@ -277,7 +299,7 @@ void Integer::Integer::perform_max(operand_stack_type& opStack) {
 	opStack.push(this->value_ > value_of<Integer>(lhs) ? make_integer<Integer>(this->value_) : lhs);
 
 };
-void Integer::Integer::perform_min(operand_stack_type& opStack) {
+void Integer::perform_min(operand_stack_type& opStack) {
 
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
@@ -360,3 +382,8 @@ void Integer::perform_greater_equal(operand_stack_type& opStack) {
 	opStack.push(make_operand<Boolean>(calculatedValue));
 
 };
+void Integer::perform_pow(operand_stack_type& opStack) {
+
+	perform_power(opStack);
+
+}

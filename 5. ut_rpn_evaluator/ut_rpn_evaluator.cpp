@@ -734,7 +734,6 @@ GATS_TEST_CASE(no_operand) {
 			GATS_TEST_CASE(test_pow_real) {
 				auto result = RPNEvaluator().evaluate({ make<Real>(Real::value_type("2.0")), make<Real>(Real::value_type("3.0")), make<Pow>() });
 				GATS_CHECK(value_of<Real>(result) == Real::value_type("8.0"));
-				std::cout << value_of<Real>(result) << std::endl;
 			}
 		#endif // TEST_REAL
 		#if TEST_MIXED
@@ -763,10 +762,10 @@ GATS_TEST_CASE(no_operand) {
 				GATS_CHECK(value_of<Real>(result) == Real::value_type("2.0"));
 			}
 			GATS_TEST_CASE(test_pow_mixed) {
-				/*auto result = RPNEvaluator().evaluate({ make<Integer>(2), make<Real>(Real::value_type("3.0")), make<Pow>() });
+				auto result = RPNEvaluator().evaluate({ make<Integer>(2), make<Real>(Real::value_type("3.0")), make<Pow>() });
 				GATS_CHECK(value_of<Real>(result) == Real::value_type("8.0"));
 				result = RPNEvaluator().evaluate({ make<Real>(Real::value_type("2.0")), make<Integer>(3), make<Pow>() });
-				GATS_CHECK(value_of<Real>(result) == Real::value_type("8.0"));*/ // TODO REMOVE THIS COMMENT
+				GATS_CHECK(value_of<Real>(result) == Real::value_type("8.0"));
 			}
 		#endif // TEST_MIXED
 	#endif // TEST_MULTI_ARG

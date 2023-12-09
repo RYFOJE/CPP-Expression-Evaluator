@@ -287,7 +287,11 @@ void Real::perform_min(operand_stack_type& opStack) {
 	opStack.push(this->value_ > value_of<Real>(lhs) ? lhs : make_real<Real>(this->value_));
 
 };
-void Real::perform_pow(operand_stack_type& opStack) {};
+void Real::perform_pow(operand_stack_type& opStack) {
+
+	perform_power(opStack);
+
+};
 
 void Real::perform_equality(operand_stack_type& opStack) {
 

@@ -116,7 +116,7 @@ public:
 	virtual void perform_arctan2(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform arctan2 not supported for this datatype"); };
 	virtual void perform_max(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform max not supported for this datatype"); };
 	virtual void perform_min(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform max not supported for this datatype"); };
-	virtual void perform_pow(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform min not supported for this datatype"); };
+	virtual void perform_pow(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform pow not supported for this datatype"); };
 
 };
 
