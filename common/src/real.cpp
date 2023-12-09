@@ -56,6 +56,11 @@ the program(s) have been supplied.
 #include <sstream>
 using namespace std;
 
+[[nodiscard]] Real::string_type Real::str() const {
+	ostringstream oss;
+	oss << /*"Real: " << */fixed << setprecision(numeric_limits<value_type>::digits10) << value_;
+	return oss.str();
+}
 
 namespace helper {
 
@@ -86,15 +91,21 @@ namespace helper {
 
 	}
 
+	[[nodiscard]] bool is_real(const Operand::pointer_type lhs, const Operand::pointer_type rhs) {
+		return (is<Real>(lhs) || is<Real>(rhs));
+	}
+
+	[[nodiscard]] bool is_real(const Operand::pointer_type op) {
+		return (is<Real>(op));
+	}
+
 }
 
+void Real::perform_negation(operand_stack_type& opStack) {
 
-[[nodiscard]] Real::string_type Real::str() const {
-	ostringstream oss;
-	oss << /*"Real: " << */fixed << setprecision(numeric_limits<value_type>::digits10) << value_;
-	return oss.str();
-}
+	opStack.push(make_operand<Real>(-this->value_));
 
+};
 void Real::perform_addition(operand_stack_type& opStack) {
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
@@ -113,21 +124,70 @@ void Real::perform_addition(operand_stack_type& opStack) {
 	opStack.push(result);
 
 };
-void Real::perform_subtraction(operand_stack_type& opStack) {};
-void Real::perform_multiplication(operand_stack_type& opStack) {};
-void Real::perform_division(operand_stack_type& opStack) {};
-void Real::perform_modulus(operand_stack_type& opStack) {};
-void Real::perform_power(operand_stack_type& opStack) {};
+void Real::perform_subtraction(operand_stack_type& opStack) {
 
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
 
-namespace helper {
+	// Make sure it is the right data type
+	if (!(is<Real>(lhs) || is<Integer>(lhs)))
+		throw std::runtime_error("Invalid operand type for subtraction.");
 
-	[[nodiscard]] bool is_real(const Operand::pointer_type lhs, const Operand::pointer_type rhs) {
-		return (is<Real>(lhs) || is<Real>(rhs));
-	}
+	Real::pointer_type lhs_real = helper::get_as_real(lhs);
 
-	[[nodiscard]] bool is_real(const Operand::pointer_type op) {
-		return (is<Real>(op));
-	}
+	opStack.push(make_real<Real>(value_of<Real>(lhs_real) - this->value_));
+
+};
+void Real::perform_multiplication(operand_stack_type& opStack) {
+
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	// Make sure it is the right data type
+	if (!(is<Real>(lhs) || is<Integer>(lhs)))
+		throw std::runtime_error("Invalid operand type for subtraction.");
+
+	Real::pointer_type lhs_real = helper::get_as_real(lhs);
+
+	opStack.push(make_real<Real>(value_of<Real>(lhs_real) * this->value_));
+
+};
+void Real::perform_division(operand_stack_type& opStack) {
+
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	// Make sure it is the right data type
+	if (!(is<Real>(lhs) || is<Integer>(lhs)))
+		throw std::runtime_error("Invalid operand type for subtraction.");
+
+	Real::pointer_type lhs_real = helper::get_as_real(lhs);
+
+	opStack.push(make_real<Real>(value_of<Real>(lhs_real) / this->value_));
 	
-}
+};
+void Real::perform_power(operand_stack_type& opStack) {
+
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	Real::value_type result;
+
+	if (this->value_ == 0){
+		make_real<Real>(Real::value_type(1));
+		return;
+	}
+
+	// Make sure it is the right data type
+	if (!(is<Real>(lhs) || is<Integer>(lhs)))
+		throw std::runtime_error("Invalid operand type for subtraction.");
+
+	Real::pointer_type lhs_real = helper::get_as_real(lhs);
+	
+	result = pow(value_of<Real>(lhs_real), this->value_);
+	
+	opStack.push(make_real<Real>(result));
+	
+};
+
+
