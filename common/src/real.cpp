@@ -110,32 +110,31 @@ void Real::perform_negation(operand_stack_type& opStack) {
 
 };
 void Real::perform_addition(operand_stack_type& opStack) {
-	Operand::pointer_type lhs = opStack.top();
 	
+	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
 
-	Operand::pointer_type result;
-
-	if (!(is<Real>(lhs) || is<Integer>(lhs)))
+	if (is<Real>(lhs)) {
+		Real::pointer_type lhs_real = helper::get_as_real(lhs);
+		opStack.push(make_operand<Real>(value_of<Real>(lhs_real) + this->value_));
+	}
+	
+	else
 		throw std::runtime_error("Invalid operand type for addition.");
 	
-	Real::pointer_type lhs_real = helper::get_as_real(lhs);
-	result = make_operand<Real>(value_of<Real>(lhs_real) + this->value_);
-	opStack.push(result);
-
 };
 void Real::perform_subtraction(operand_stack_type& opStack) {
 
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
 
-	// Make sure it is the right data type
-	if (!(is<Real>(lhs) || is<Integer>(lhs)))
-		throw std::runtime_error("Invalid operand type for subtraction.");
+	if (is<Real>(lhs)) {
+		Real::pointer_type lhs_real = helper::get_as_real(lhs);
+		opStack.push(make_operand<Real>(value_of<Real>(lhs_real) - this->value_));
+	}
 
-	Real::pointer_type lhs_real = helper::get_as_real(lhs);
-
-	opStack.push(make_real<Real>(value_of<Real>(lhs_real) - this->value_));
+	else
+		throw std::runtime_error("Invalid operand type for addition.");
 
 };
 void Real::perform_multiplication(operand_stack_type& opStack) {
@@ -143,12 +142,13 @@ void Real::perform_multiplication(operand_stack_type& opStack) {
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
 
-	// Make sure it is the right data type
-	if (!(is<Real>(lhs) || is<Integer>(lhs)))
-		throw std::runtime_error("Invalid operand type for subtraction.");
+	if (is<Real>(lhs)) {
+		Real::pointer_type lhs_real = helper::get_as_real(lhs);
+		opStack.push(make_operand<Real>(value_of<Real>(lhs_real) * this->value_));
+	}
 
-	Real::pointer_type lhs_real = helper::get_as_real(lhs);
-	opStack.push(make_real<Real>(value_of<Real>(lhs_real) * this->value_));
+	else
+		throw std::runtime_error("Invalid operand type for addition.");
 
 };
 void Real::perform_division(operand_stack_type& opStack) {
@@ -156,13 +156,13 @@ void Real::perform_division(operand_stack_type& opStack) {
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
 
-	// Make sure it is the right data type
-	if (!(is<Real>(lhs) || is<Integer>(lhs)))
-		throw std::runtime_error("Invalid operand type for subtraction.");
+	if (is<Real>(lhs)) {
+		Real::pointer_type lhs_real = helper::get_as_real(lhs);
+		opStack.push(make_operand<Real>(value_of<Real>(lhs_real) / this->value_));
+	}
 
-	Real::pointer_type lhs_real = helper::get_as_real(lhs);
-
-	opStack.push(make_real<Real>(value_of<Real>(lhs_real) / this->value_));
+	else
+		throw std::runtime_error("Invalid operand type for addition.");
 	
 };
 void Real::perform_power(operand_stack_type& opStack) {
@@ -170,20 +170,17 @@ void Real::perform_power(operand_stack_type& opStack) {
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
 
-	Real::value_type result;
-
-	if (this->value_ == 0){
-		make_real<Real>(Real::value_type(1));
-		return;
-	}
-
 	// Make sure it is the right data type
-	if (!(is<Real>(lhs) || is<Integer>(lhs)))
+	if (!(is<Real>(lhs)))
 		throw std::runtime_error("Invalid operand type for subtraction.");
 
-	Real::pointer_type lhs_real = helper::get_as_real(lhs);
-	
-	result = pow(value_of<Real>(lhs_real), this->value_);
+	Real::value_type result;
+
+	if (this->value_ == 0)
+		opStack.push(make_real<Real>(Real::value_type(1)));
+
+	Real::pointer_type lhs_real = helper::get_as_real(lhs);	
+	result = boost::multiprecision::pow(value_of<Real>(lhs_real), this->value_);
 	
 	opStack.push(make_real<Real>(result));
 	
@@ -262,9 +259,141 @@ void Real::perform_tan(operand_stack_type& opStack) {
 };
 void Real::perform_arctan2(operand_stack_type& opStack) {
 
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
 
+	if (is<Real>(lhs)) {
+		Real::pointer_type lhs_real = helper::get_as_real(lhs);
+		opStack.push(make_real<Real>(atan2(value_of<Real>(lhs_real), this->value_)));
+	}
+
+	else
+		throw std::runtime_error("Invalid operand type for addition.");
 
 };
-void Real::perform_max(operand_stack_type& opStack) {};
-void Real::perform_min(operand_stack_type& opStack) {};
+void Real::perform_max(operand_stack_type& opStack) {
+
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	opStack.push(this->value_ > value_of<Real>(lhs) ? make_real<Real>(this->value_) : lhs);
+
+};
+void Real::perform_min(operand_stack_type& opStack) {
+
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	opStack.push(this->value_ > value_of<Real>(lhs) ? lhs : make_real<Real>(this->value_));
+
+};
 void Real::perform_pow(operand_stack_type& opStack) {};
+
+void Real::perform_equality(operand_stack_type& opStack) {
+
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	bool calculatedValue;
+
+	if (is<Real>(lhs)) {
+		calculatedValue = (value_of<Real>(lhs) == this->value_);
+	}
+
+	else {
+		calculatedValue = true;
+	}
+
+	opStack.push(make_operand<Boolean>(calculatedValue));
+
+};
+void Real::perform_inequality(operand_stack_type& opStack) {
+
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	bool calculatedValue;
+
+	if (is<Real>(lhs)) {
+		calculatedValue = (value_of<Real>(lhs) != this->value_);
+	}
+
+	else {
+		calculatedValue = true;
+	}
+
+	opStack.push(make_operand<Boolean>(calculatedValue));
+
+};
+void Real::perform_less(operand_stack_type& opStack) {
+
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	bool calculatedValue;
+
+	if (is<Real>(lhs)) {
+		calculatedValue = (value_of<Real>(lhs) < this->value_);
+	}
+
+	else {
+		calculatedValue = true;
+	}
+
+	opStack.push(make_operand<Boolean>(calculatedValue));
+
+};
+ void Real::perform_less_equal(operand_stack_type& opStack) {
+ 
+	 Operand::pointer_type lhs = opStack.top();
+	 opStack.pop();
+
+	 bool calculatedValue;
+
+	 if (is<Real>(lhs)) {
+		 calculatedValue = (value_of<Real>(lhs) <= this->value_);
+	 }
+
+	 else {
+		 calculatedValue = true;
+	 }
+
+	 opStack.push(make_operand<Boolean>(calculatedValue));
+
+ };
+ void Real::perform_greater(operand_stack_type& opStack) {
+ 
+	 Operand::pointer_type lhs = opStack.top();
+	 opStack.pop();
+
+	 bool calculatedValue;
+
+	 if (is<Real>(lhs)) {
+		 calculatedValue = (value_of<Real>(lhs) > this->value_);
+	 }
+
+	 else {
+		 calculatedValue = true;
+	 }
+
+	 opStack.push(make_operand<Boolean>(calculatedValue));
+ 
+ };
+ void Real::perform_greater_equal(operand_stack_type& opStack) {
+ 
+	 Operand::pointer_type lhs = opStack.top();
+	 opStack.pop();
+
+	 bool calculatedValue;
+
+	 if (is<Real>(lhs)) {
+		 calculatedValue = (value_of<Real>(lhs) >= this->value_);
+	 }
+
+	 else {
+		 calculatedValue = true;
+	 }
+
+	 opStack.push(make_operand<Boolean>(calculatedValue));
+ 
+ };

@@ -69,7 +69,11 @@ the program(s) have been supplied.
 
 	}
 
-[[nodiscard]] Operator::pointer_type get_operator(Operand::operand_stack_type& opStack) {
+/**
+ * @brief			Get the operator for the perform and modify the operands to their correct data types
+ * @param opStack	The operand stack
+*/
+[[nodiscard]] void prepare_datatypes(Operand::operand_stack_type& opStack) {
 
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
@@ -80,8 +84,8 @@ the program(s) have been supplied.
 	Operand::pointer_type newRhs;
 
 	if (is<Real>(lhs) || is<Real>(rhs) ){
-		newLhs = make_operand<Real>(get_as_real(lhs));
-		newRhs = make_operand<Real>(get_as_real(rhs));
+		newLhs = get_as_real(lhs);
+		newRhs = get_as_real(rhs);
 	}
 
 	else {
@@ -89,10 +93,17 @@ the program(s) have been supplied.
 		newRhs = rhs;
 	}
 
+	opStack.push(newRhs);
+	opStack.push(newLhs);
+
+
+
 }
 
 
 void Power::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	prepare_datatypes(opStack);
 
 	// Get the right operand
 	Operand::pointer_type op = opStack.top();
@@ -101,12 +112,18 @@ void Power::perform(std::stack<Operand::pointer_type>& opStack) const {
 	op->perform_power(opStack);
 
 }
+void Factorial::perform(std::stack<Operand::pointer_type>& opStack) const {
 
-void Assignment::perform(std::stack<Operand::pointer_type>& opStack) const {
+	// Get the top right operand
+	Operand::pointer_type op = opStack.top();
+	opStack.pop();
+
+	op->perform_factorial(opStack);
 
 }
-
 void Addition::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	prepare_datatypes(opStack);
 
 	// Get the right operand
 	Operand::pointer_type rhs = opStack.top();
@@ -115,32 +132,9 @@ void Addition::perform(std::stack<Operand::pointer_type>& opStack) const {
 	rhs->perform_addition(opStack);
 
 }
-
-void And::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-	//// Get the right operand
-	//Operand::pointer_type rhs = opStack.top();
-	//opStack.pop();
-
-	//// Get the left operand
-	//Operand::pointer_type lhs = opStack.top();
-	//opStack.pop();
-
-	//if (helper::is_bool(lhs, rhs)) {
-
-	//	Boolean::value_type rhsValue = value_of<Boolean>(rhs);
-	//	Boolean::value_type lhsValue = value_of<Boolean>(lhs);
-	//	opStack.push(make_operand<Boolean>(lhsValue && rhsValue));
-
-	//}
-	//else {
-	//	// Throw an exception
-	//	throw std::exception("Invalid operand type for negation.");
-	//}
-
-}
-
 void Division::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	prepare_datatypes(opStack);
 
 	// Get the right operand
 	Operand::pointer_type rhs = opStack.top();
@@ -149,54 +143,9 @@ void Division::perform(std::stack<Operand::pointer_type>& opStack) const {
 	rhs->perform_division(opStack);
 
 }
-void Equality::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-	// Get the right operand
-	Operand::pointer_type rhs = opStack.top();
-	opStack.pop();
-
-	rhs->perform_equality(opStack);
-
-	//// Get the left operand
-	//Operand::pointer_type lhs = opStack.top();
-	//opStack.pop();
-
-	//if (helper::is_bool(lhs, rhs)) {
-
-	//	Boolean::value_type rhsValue = value_of<Boolean>(rhs);
-	//	Boolean::value_type lhsValue = value_of<Boolean>(lhs);
-	//	opStack.push(make_operand<Real>(lhsValue || rhsValue));
-
-	//}
-	//else if (helper::is_real(lhs, rhs)) {
-	//	// Throw an exception
-	//	throw std::exception("Invalid operand type for negation.");
-	//}
-
-	//else if (helper::is_integer(lhs, rhs)) {
-	//	// Throw an exception
-	//	throw std::exception("Invalid operand type for negation.");
-	//}
-
-	//else {
-	//	// Throw an exception
-	//	throw std::exception("Invalid operand type for negation.");
-	//}
-
-}
-void Greater::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-}
-void GreaterEqual::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-}
-void Inequality::perform(std::stack<Operand::pointer_type>& opStack) const {}
-void Less::perform(std::stack<Operand::pointer_type>& opStack) const {
-}
-void LessEqual::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-}
 void Multiplication::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	prepare_datatypes(opStack);
 
 	// Get the right operand
 	Operand::pointer_type rhs = opStack.top();
@@ -204,27 +153,16 @@ void Multiplication::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	rhs->perform_multiplication(opStack);
 
-	//// Get the left operand
-	//Operand::pointer_type lhs = opStack.top();
-	//opStack.pop();
+}
+void Subtraction::perform(std::stack<Operand::pointer_type>& opStack) const {
 
-	//// TODO FIX THIS AS IT DOES NOT WORK WITH MIXED DATA TYPES
-	//if (helper::is_real(lhs, rhs)) {
+	prepare_datatypes(opStack);
 
-	//	// Convert both to real and make sure they are
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
 
-	//	Real::value_type rhsValue = value_of<Real>(helper::get_as_real(rhs));
-	//	Real::value_type lhsValue = value_of<Real>(helper::get_as_real(lhs));
-	//	opStack.push(make_operand<Real>(lhsValue * rhsValue));
-	//}
-
-	//else {
-
-	//	Integer::value_type rhsValue = value_of<Integer>(rhs);
-	//	Integer::value_type lhsValue = value_of<Integer>(lhs);
-	//	opStack.push(make_operand<Integer>(lhsValue * rhsValue));
-
-	//}
+	rhs->perform_subtraction(opStack);
 
 }
 void Modulus::perform(std::stack<Operand::pointer_type>& opStack) const {
@@ -235,90 +173,8 @@ void Modulus::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	rhs->perform_modulus(opStack);
 
-	//// Get the left operand
-	//Operand::pointer_type lhs = opStack.top();
-	//opStack.pop();
-
-	//// TODO FIX THIS AS IT DOES NOT WORK WITH MIXED DATA TYPES
-	//if (helper::is_real(lhs, rhs)) {
-	//	throw std::runtime_error("Error: Cannot perform modulo on Real number");
-	//}
-
-	//else {
-
-	//	Integer::value_type rhsValue = value_of<Integer>(rhs);
-	//	Integer::value_type lhsValue = value_of<Integer>(lhs);
-	//	opStack.push(make_operand<Integer>(lhsValue % rhsValue));
-
-	//}
-
 }
-void Nand::perform(std::stack<Operand::pointer_type>& opStack) const {
 
-}
-void Nor::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-}
-void Or::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-	// Get the right operand
-	Operand::pointer_type rhs = opStack.top();
-	opStack.pop();
-
-	// Get the left operand
-	Operand::pointer_type lhs = opStack.top();
-	opStack.pop();
-
-	if (helper::is_bool(lhs, rhs)) {
-		
-		Boolean::value_type rhsValue = value_of<Boolean>(rhs);
-		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
-		opStack.push(make_operand<Boolean>(lhsValue || rhsValue));
-
-	}
-	else {
-		// Throw an exception
-		throw std::exception("Invalid operand type for negation.");
-	}
-
-}
-void Subtraction::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-	// Get the right operand
-	Operand::pointer_type rhs = opStack.top();
-	opStack.pop();
-
-	rhs->perform_subtraction(opStack);
-
-	//// Get the left operand
-	//Operand::pointer_type lhs = opStack.top();
-	//opStack.pop();
-
-	//// TODO FIX THIS AS IT DOES NOT WORK WITH MIXED DATA TYPES
-	//if (helper::is_real(lhs, rhs)) {
-
-	//	// Convert both to real and make sure they are
-
-	//	Real::value_type rhsValue = value_of<Real>(helper::get_as_real(rhs));
-	//	Real::value_type lhsValue = value_of<Real>(helper::get_as_real(lhs));
-	//	opStack.push(make_operand<Real>(lhsValue - rhsValue));
-	//}
-
-	//else {
-
-	//	Integer::value_type rhsValue = value_of<Integer>(rhs);
-	//	Integer::value_type lhsValue = value_of<Integer>(lhs);
-	//	opStack.push(make_operand<Integer>(lhsValue - rhsValue));
-
-	//}
-
-}
-void Xor::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-}
-void Xnor::perform(std::stack<Operand::pointer_type>& opStack) const {
-
-}
 void Identity::perform(std::stack<Operand::pointer_type>& opStack) const {
 	//TODO Check to see if this is supposed to be empty
 }
@@ -330,26 +186,77 @@ void Negation::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	op->perform_negation(opStack);
 
-	//if (is<Real>(currOperand)) {
-	//	// Negate the operand
+}
+void Assignment::perform(std::stack<Operand::pointer_type>& opStack) const {
 
-	//	Real::value_type realValue = value_of<Real>(currOperand);
-	//	Real::pointer_type realOperand = std::make_shared<Real>(-realValue);
+}
+
+void And::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	Operand::pointer_type op = opStack.top();
+	opStack.pop();
+
+	op->perform_and(opStack);
+
+}
+void Nand::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	Operand::pointer_type op = opStack.top();
+	opStack.pop();
+
+	op->perform_nand(opStack);
+
+}
+void Nor::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	Operand::pointer_type op = opStack.top();
+	opStack.pop();
+
+	op->perform_nor(opStack);
+
+}
+void Or::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	Operand::pointer_type op = opStack.top();
+	opStack.pop();
+
+	op->perform_or(opStack);
+
+	//// Get the right operand
+	//Operand::pointer_type rhs = opStack.top();
+	//opStack.pop();
+
+	//// Get the left operand
+	//Operand::pointer_type lhs = opStack.top();
+	//opStack.pop();
+
+	//if (helper::is_bool(lhs, rhs)) {
 	//	
-	//	opStack.push(realOperand);
-	//}
-	//else if (is<Integer>(currOperand)) {
-	//	// Negate the operand
+	//	Boolean::value_type rhsValue = value_of<Boolean>(rhs);
+	//	Boolean::value_type lhsValue = value_of<Boolean>(lhs);
+	//	opStack.push(make_operand<Boolean>(lhsValue || rhsValue));
 
-	//	Integer::value_type realValue = value_of<Integer>(currOperand);
-	//	Integer::pointer_type realOperand = std::make_shared<Integer>(-realValue);
-
-	//	opStack.push(realOperand);
 	//}
 	//else {
 	//	// Throw an exception
 	//	throw std::exception("Invalid operand type for negation.");
 	//}
+
+}
+void Xor::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	Operand::pointer_type op = opStack.top();
+	opStack.pop();
+
+	op->perform_xor(opStack);
+
+}
+void Xnor::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	Operand::pointer_type op = opStack.top();
+	opStack.pop();
+
+	op->perform_xnor(opStack);
 
 }
 void Not::perform(std::stack<Operand::pointer_type>& opStack) const {
@@ -359,45 +266,71 @@ void Not::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	op->perform_not(opStack);
 
-	/*if (helper::is_bool(currOperand)) {
-
-		Boolean::value_type boolValue = value_of<Boolean>(currOperand);
-		Boolean::pointer_type boolOperand = std::make_shared<Boolean>(!boolValue);
-
-		opStack.push(boolOperand);
-
-	}
-	else {
-
-		throw std::exception("Invalid operand type for not.");
-
-	}*/
-
 }
-void Factorial::perform(std::stack<Operand::pointer_type>& opStack) const {
 
-	// Get the top right operand
-	Operand::pointer_type op = opStack.top();
+void Equality::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	prepare_datatypes(opStack);
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
 	opStack.pop();
 
-	op->perform_factorial(opStack);
+	rhs->perform_equality(opStack);
 
-	//if (is<Real>(currOperand)) {
-	//	throw std::runtime_error("Error: Operand cannot be a Real");
-	//}
+}
+void Inequality::perform(std::stack<Operand::pointer_type>& opStack) const {
 
-	//// Get the numerical value and create a value to hold the running total
-	//Integer::value_type amount = value_of<Integer>(currOperand);
-	//Integer::value_type runningTotal(1);
+	prepare_datatypes(opStack);
 
-	//// Perform the factorial calculation
-	//for (int i = 1; i <= amount; i++) {
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
 
-	//	runningTotal *= i;
+	rhs->perform_inequality(opStack);
 
-	//}
+}
+void Greater::perform(std::stack<Operand::pointer_type>& opStack) const {
 
-	//// Create an operand with the given value and add it to the operand stack
-	//opStack.push(make_operand<Integer>(runningTotal));
+	prepare_datatypes(opStack);
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_greater(opStack);
+
+}
+void GreaterEqual::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	prepare_datatypes(opStack);
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_greater_equal(opStack);
+
+}
+void Less::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	prepare_datatypes(opStack);
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_less(opStack);
+
+}
+void LessEqual::perform(std::stack<Operand::pointer_type>& opStack) const {
+
+	prepare_datatypes(opStack);
+
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+
+	rhs->perform_less_equal(opStack);
 
 }

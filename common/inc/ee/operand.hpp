@@ -76,11 +76,26 @@ public:
 	virtual void perform_division(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform division not supported for this datatype"); };
 	virtual void perform_modulus(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform modulus not supported for this datatype"); };
 	virtual void perform_power(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform power not supported for this datatype"); };
+	virtual void perform_inequality(operand_stack_type& opStack)		{ throw std::runtime_error("Error: perform inequality not supported for this datatype"); };
 	virtual void perform_equality(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform equality not supported for this datatype"); };
 	virtual void perform_negation(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform negation not supported for this datatype"); };
 	virtual void perform_not(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform not not supported for this datatype"); };
 	virtual void perform_factorial(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform factorial not supported for this datatype"); };
 	
+	// COMPARAISON
+	virtual void perform_less(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform less not supported for this datatype"); };;
+	virtual void perform_less_equal(operand_stack_type& opStack)		{ throw std::runtime_error("Error: perform less equal supported for this datatype"); };;
+	virtual void perform_greater(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform greater not supported for this datatype"); };;
+	virtual void perform_greater_equal(operand_stack_type& opStack)		{ throw std::runtime_error("Error: perform greater equal not supported for this datatype"); };;
+
+	// LOGICAL OPERATOR
+	virtual void perform_and(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform and not supported for this datatype"); };
+	virtual void perform_nand(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform nand not supported for this datatype"); };
+	virtual void perform_nor(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform nor not supported for this datatype"); };
+	virtual void perform_or(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform or not supported for this datatype"); };
+	virtual void perform_xor(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform xor not supported for this datatype"); };
+	virtual void perform_xnor(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform xnor not supported for this datatype"); };
+
 
 	// FUNCTIONS
 	virtual void perform_abs(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform abs not supported for this datatype"); };

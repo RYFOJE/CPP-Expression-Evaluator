@@ -47,4 +47,3 @@ the program(s) have been supplied.
 #include <ee/real.hpp>
 #include <ee/variable.hpp>
 
-

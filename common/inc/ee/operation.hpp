@@ -61,5 +61,5 @@ public:
 	DEF_POINTER_TYPE(Operation)
 
 	[[nodiscard]] virtual unsigned number_of_args() const = 0;
-	[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type> &opStack) const = 0;
+	[[nodiscard]] virtual void perform(std::stack<Operand::pointer_type>& opStack) const { throw std::runtime_error("Error: Perform not implemented for this function"); };
 };

@@ -80,13 +80,21 @@ public:
 	virtual void perform_modulus(operand_stack_type& opStack) override;
 	virtual void perform_power(operand_stack_type& opStack) override;
 	virtual void perform_equality(operand_stack_type& opStack) override;
+	virtual void perform_inequality(operand_stack_type& opStack) override;
 	virtual void perform_negation(operand_stack_type& opStack) override;
 	virtual void perform_factorial(operand_stack_type& opStack) override;
 
 	// FUNCTIONS
 	virtual void perform_abs(operand_stack_type& opStack) override;
+	virtual void perform_max(operand_stack_type& opStack) override;
+	virtual void perform_min(operand_stack_type& opStack) override;
 
-	
+	// COMPARATOR
+	virtual void perform_less(operand_stack_type& opStack) override;
+	virtual void perform_less_equal(operand_stack_type& opStack) override;
+	virtual void perform_greater(operand_stack_type& opStack) override;
+	virtual void perform_greater_equal(operand_stack_type& opStack) override;
+
 };
 
 /*! Make a new smart-pointer managed Token object with constructor parameter. */

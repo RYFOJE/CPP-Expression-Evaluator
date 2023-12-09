@@ -62,3 +62,183 @@ namespace helper {
 	}
 	
 }
+
+
+void Boolean::perform_not(operand_stack_type& opStack) {
+
+	opStack.push(make_bool(!this->value_));
+
+}
+
+void Boolean::perform_and(operand_stack_type& opStack) {
+
+	// Get the right operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+
+	if (is<Boolean>(lhs)) {
+
+		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
+		opStack.push(make_operand<Boolean>(lhsValue && this->value_));
+
+	}
+	else {
+		// Throw an exception
+		throw std::exception("Invalid operand type for negation.");
+	}
+
+}
+void Boolean::perform_nand(operand_stack_type& opStack) {
+
+	// Get the right operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+
+	if (is<Boolean>(lhs)) {
+
+		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
+		opStack.push(make_operand<Boolean>(!(lhsValue && this->value_)));
+
+	}
+	else {
+		// Throw an exception
+		throw std::exception("Invalid operand type for negation.");
+	}
+
+}
+void Boolean::perform_nor(operand_stack_type& opStack) {
+
+	// Get the right operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+
+	if (is<Boolean>(lhs)) {
+
+		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
+		opStack.push(make_operand<Boolean>(!(lhsValue || this->value_)));
+
+	}
+	else {
+		// Throw an exception
+		throw std::exception("Invalid operand type for negation.");
+	}
+
+}
+void Boolean::perform_or(operand_stack_type& opStack) {
+
+	// Get the right operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+	
+
+	if (is<Boolean>(lhs)) {
+		
+		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
+		opStack.push(make_operand<Boolean>(lhsValue || this->value_));
+
+	}
+	else {
+		// Throw an exception
+		throw std::exception("Invalid operand type for negation.");
+	}
+	
+}
+void Boolean::perform_xor(operand_stack_type& opStack) {
+
+	// Get the right operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+
+	if (is<Boolean>(lhs)) {
+
+		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
+		opStack.push(make_operand<Boolean>(lhsValue != this->value_));
+
+	}
+	else {
+		// Throw an exception
+		throw std::exception("Invalid operand type for negation.");
+	}
+
+}
+void Boolean::perform_xnor(operand_stack_type& opStack) {
+
+	// Get the right operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+
+	if (is<Boolean>(lhs)) {
+
+		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
+		opStack.push(make_operand<Boolean>(!(lhsValue != this->value_)));
+
+	}
+	else {
+		// Throw an exception
+		throw std::exception("Invalid operand type for negation.");
+	}
+
+}
+
+
+void Boolean::perform_equality(operand_stack_type& opStack) {
+
+	// Get the right operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+
+	if (is<Boolean>(lhs)) {
+
+		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
+		opStack.push(make_operand<Boolean>(lhsValue == this->value_));
+
+	}
+	else {
+		// Throw an exception
+		throw std::exception("Invalid operand type for negation.");
+	}
+}
+void Boolean::perform_greater(operand_stack_type& opStack) {
+
+	// Get the right operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+
+	if (is<Boolean>(lhs)) {
+
+		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
+		opStack.push(make_operand<Boolean>(lhsValue < this->value_));
+
+	}
+	else {
+		// Throw an exception
+		throw std::exception("Invalid operand type for negation.");
+	}
+
+}
+void Boolean::perform_less(operand_stack_type& opStack) {
+
+	// Get the right operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+
+	if (is<Boolean>(lhs)) {
+
+		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
+		opStack.push(make_operand<Boolean>(lhsValue > this->value_));
+
+	}
+	else {
+		// Throw an exception
+		throw std::exception("Invalid operand type for negation.");
+	}
+
+}

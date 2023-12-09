@@ -58,6 +58,20 @@ public:
 
 	[[nodiscard]]	value_type	value() const { return value_; }
 	[[nodiscard]]	string_type	str() const override;
+
+
+	virtual void perform_not(operand_stack_type& opStack) override;
+	virtual void perform_and(operand_stack_type& opStack) override;
+	virtual void perform_nand(operand_stack_type& opStack) override;
+	virtual void perform_nor(operand_stack_type& opStack) override;
+	virtual void perform_or(operand_stack_type& opStack) override;
+	virtual void perform_xor(operand_stack_type& opStack) override;
+	virtual void perform_xnor(operand_stack_type& opStack) override;
+
+	virtual void perform_equality(operand_stack_type& opStack) override;
+	virtual void perform_greater(operand_stack_type& opStack) override;
+	virtual void perform_less(operand_stack_type& opStack) override;
+
 };
 
 
