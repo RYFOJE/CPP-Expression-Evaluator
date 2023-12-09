@@ -69,7 +69,6 @@ void Boolean::perform_not(operand_stack_type& opStack) {
 	opStack.push(make_bool(!this->value_));
 
 }
-
 void Boolean::perform_and(operand_stack_type& opStack) {
 
 	// Get the right operand
@@ -257,6 +256,25 @@ void Boolean::perform_less(operand_stack_type& opStack) {
 	else {
 		// Throw an exception
 		throw std::exception("Invalid operand type for negation.");
+	}
+
+}
+void Boolean::perform_less_equal(operand_stack_type& opStack) {
+
+	// Get the right operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+
+	if (is<Boolean>(lhs)) {
+
+		Boolean::value_type lhsValue = value_of<Boolean>(lhs);
+		opStack.push(make_operand<Boolean>(lhsValue >= this->value_));
+
+	}
+	else {
+		// Throw an exception
+		throw std::runtime_error("Invalid operand type for negation.");
 	}
 
 }
