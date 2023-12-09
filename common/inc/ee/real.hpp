@@ -73,8 +73,8 @@ public:
 	virtual void perform_subtraction(operand_stack_type& opStack) override;
 	virtual void perform_multiplication(operand_stack_type& opStack) override;
 	virtual void perform_division(operand_stack_type& opStack) override;
-	virtual void perform_modulus(operand_stack_type& opStack) override;
 	virtual void perform_power(operand_stack_type& opStack) override;
+	virtual void perform_negation(operand_stack_type& opStack) override;
 
 };
 
