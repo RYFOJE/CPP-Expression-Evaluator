@@ -317,10 +317,10 @@ GATS_TEST_CASE(no_operand) {
 			auto result = RPNEvaluator().evaluate({ make<Real>(Real::value_type("4.25")), make<Integer>(4), make<Subtraction>() });
 			GATS_CHECK(round(result) == round(Real::value_type("0.25")));
 		}
-		/*GATS_TEST_CASE(test_neg_power_Integer) {
+		GATS_TEST_CASE(test_neg_power_Integer) {
 			auto result = RPNEvaluator().evaluate({ make<Integer>(2), make<Integer>(-4), make<Power>() });
 			GATS_CHECK(value_of<Real>(result) == Real::value_type("1.0") / Real::value_type("16.0"));
-		}*/ // TODO REMOVE COMMENT
+		}
 		GATS_TEST_CASE(test_power_Integer_Real) {
 			auto result = RPNEvaluator().evaluate({ make<Integer>(2), make<Real>(Real::value_type("3.0")), make<Power>() });
 			GATS_CHECK(round(result) == round(Real::value_type("8.0")));
