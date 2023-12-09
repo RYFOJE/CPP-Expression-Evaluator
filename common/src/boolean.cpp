@@ -253,10 +253,8 @@ void Boolean::perform_greater_equal(operand_stack_type& opStack) {
 		opStack.push(make_operand<Boolean>(lhsValue >= this->value_));
 
 	}
-	else {
-		// Throw an exception
-		throw std::exception("Invalid operand type for negation.");
-	}
+	else
+		throw std::exception("Invalid operand type for greater equal.");
 
 }
 void Boolean::perform_less(operand_stack_type& opStack) {

@@ -295,7 +295,7 @@ void Integer::perform_less(operand_stack_type& opStack) {
 	bool calculatedValue;
 
 	if (is<Integer>(lhs)) {
-		calculatedValue = (value_of<Integer>(lhs) > this->value_);
+		calculatedValue = (value_of<Integer>(lhs) < this->value_);
 	}
 
 	else {
@@ -313,7 +313,7 @@ void Integer::perform_less_equal(operand_stack_type& opStack) {
 	bool calculatedValue;
 
 	if (is<Integer>(lhs)) {
-		calculatedValue = (value_of<Integer>(lhs) >= this->value_);
+		calculatedValue = (value_of<Integer>(lhs) <= this->value_);
 	}
 
 	else {
@@ -331,7 +331,7 @@ void Integer::perform_greater(operand_stack_type& opStack) {
 	bool calculatedValue;
 
 	if (is<Integer>(lhs)) {
-		calculatedValue = ((value_of<Integer>(lhs) < this->value_));
+		calculatedValue = (value_of<Integer>(lhs) > this->value_);
 	}
 
 	else {
@@ -350,7 +350,7 @@ void Integer::perform_greater_equal(operand_stack_type& opStack) {
 
 	if (is<Integer>(lhs)) {
 
-		calculatedValue = (value_of<Integer>(lhs) <= this->value_);
+		calculatedValue = (value_of<Integer>(lhs) >= this->value_);
 	}
 
 	else {
