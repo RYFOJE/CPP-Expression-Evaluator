@@ -209,7 +209,41 @@ void Integer::perform_modulus(operand_stack_type& opStack) {
 
 };
 
-void Integer::perform_power(operand_stack_type& opStack) {};
+void Integer::perform_power(operand_stack_type& opStack) {
+
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	Operand::pointer_type result;
+	
+	// Anything to the power of 0 is 1
+	if (this->value_ == 0)
+		result = make_integer<Integer>(1); 
+
+	
+	if (helper::is_integer(lhs)){
+
+		Integer::value_type exponent = this->value_;
+		Integer::value_type currResult = 1;
+		Integer::value_type exp = exponent;
+		Integer::value_type curr_base = value_of<Integer>(lhs);
+
+		while (exp > 0) {
+			if (exp % 2 != 0) currResult *= curr_base;
+			exp /= 2;
+			curr_base *= curr_base;
+		}
+
+		result = make_operand<Integer>(currResult);
+	}
+	//else if (helper::is_real(lhs))
+	//	result = make_operand<Real>(pow(value_of<Real>(lhs), this->value_)); // TODO IMPLEMENT REAL
+
+	else
+		throw std::runtime_error("Invalid operand type for addition.");
+
+	opStack.push(result);
+};
 
 void Integer::perform_equality(operand_stack_type& opStack) {};
 void Integer::perform_negation(operand_stack_type& opStack) {
