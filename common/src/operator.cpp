@@ -252,26 +252,6 @@ void Or::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	op->perform_or(opStack);
 
-	//// Get the right operand
-	//Operand::pointer_type rhs = opStack.top();
-	//opStack.pop();
-
-	//// Get the left operand
-	//Operand::pointer_type lhs = opStack.top();
-	//opStack.pop();
-
-	//if (helper::is_bool(lhs, rhs)) {
-	//	
-	//	Boolean::value_type rhsValue = value_of<Boolean>(rhs);
-	//	Boolean::value_type lhsValue = value_of<Boolean>(lhs);
-	//	opStack.push(make_operand<Boolean>(lhsValue || rhsValue));
-
-	//}
-	//else {
-	//	// Throw an exception
-	//	throw std::exception("Invalid operand type for negation.");
-	//}
-
 }
 void Xor::perform(std::stack<Operand::pointer_type>& opStack) const {
 
