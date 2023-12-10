@@ -45,9 +45,6 @@ the program(s) have been supplied.
 	return value_m->str();
 }
 
-/**
- * @brief helper functions for variable class
-*/
 namespace helper {
 
 	/**
@@ -74,10 +71,6 @@ namespace helper {
 
 }
 
-/**
- * @brief			overriden perform assignment operator.
- * @param opStack	The operand stack to manipulate.
-*/
 void Variable::perform_assignment(operand_stack_type& opStack) {
 	// pop the value from the stack
 	Operand::pointer_type value = opStack.top();
@@ -88,10 +81,6 @@ void Variable::perform_assignment(operand_stack_type& opStack) {
 
 }
 
-/**
- * @brief			overriden perform result operator.
- * @param opStack	The operand stack to manipulate.
-*/
 void Variable::perform_result(operand_stack_type& opStack) {
 
 	// push the variable onto the stack
