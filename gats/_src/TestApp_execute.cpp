@@ -120,10 +120,6 @@ namespace gats {
 
 					nMaxChecked = std::max(nMaxChecked, testCase->nChecked_m);
 				}
-				catch (const std::exception& e) {
-					// Handle other standard exceptions
-					exceptionMessage = e.what();
-				} // TODO REMOVE THIS
 				catch (...) {
 					exceptionMessage = "Unknown exception caught.";
 				};
