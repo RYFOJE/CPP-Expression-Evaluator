@@ -45,14 +45,27 @@ the program(s) have been supplied.
 	return value_m->str();
 }
 
+/**
+ * @brief helper functions for variable class
+*/
 namespace helper {
 
+	/**
+	 * @brief			Make a variable from an operand.
+	 * @param value		The operand to convert
+	 * @return			The converted operand as a variable.
+	*/
 	Variable::pointer_type make_variable(Operand::pointer_type const& value) {
 		Variable::pointer_type var = std::make_shared<Variable>();
 		var->set(value);
 		return var;
 	}
 	
+	/**
+	 * @brief			Verify if a variable is initialized.
+	 * @param var		The variable to check.
+	 * @return			True if the variable is initialized. Else false.
+	*/
 	[[nodiscard]] bool is_var_initialized(Variable::pointer_type var) {
 
 		return var->value() != nullptr;
@@ -61,6 +74,10 @@ namespace helper {
 
 }
 
+/**
+ * @brief			overriden perform assignment operator.
+ * @param opStack	The operand stack to manipulate.
+*/
 void Variable::perform_assignment(operand_stack_type& opStack) {
 	// pop the value from the stack
 	Operand::pointer_type value = opStack.top();
@@ -71,6 +88,10 @@ void Variable::perform_assignment(operand_stack_type& opStack) {
 
 }
 
+/**
+ * @brief			overriden perform result operator.
+ * @param opStack	The operand stack to manipulate.
+*/
 void Variable::perform_result(operand_stack_type& opStack) {
 
 	// push the variable onto the stack
