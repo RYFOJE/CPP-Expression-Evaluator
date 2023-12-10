@@ -40,6 +40,9 @@
     <ClCompile Include="ut1_tokens_operands.cpp" />
     <ClCompile Include="ut2_tokens_operations.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="gats-test-log-file.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

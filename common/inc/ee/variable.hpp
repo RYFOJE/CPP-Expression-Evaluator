@@ -56,4 +56,29 @@ public:
 	[[nodiscard]]	value_type	value() const { return value_m; }
 					void		set(Operand::pointer_type const& value) { value_m = value; }
 	[[nodiscard]]	string_type	str() const override;
+
+	/**
+	 * @brief			overriden perform assignment operator.
+	 * @param opStack	The operand stack to manipulate.
+	*/
+	virtual void perform_assignment(operand_stack_type& opStack) override;
+
+	/**
+	 * @brief			overriden perform result operator.
+	 * @param opStack	The operand stack to manipulate.
+	*/
+	virtual void perform_result(operand_stack_type& opStack) override;
+
 };
+
+/**
+ * @brief helper functions for variable class
+*/
+namespace helper {
+
+	[[nodiscard]] bool is_var_initialized(Variable::pointer_type var);
+	Variable::pointer_type make_variable(Operand::pointer_type const& value);
+
+};
+
+

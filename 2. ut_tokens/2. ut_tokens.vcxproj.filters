@@ -78,4 +78,7 @@
       <Filter>Source Files\ee</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="gats-test-log-file.txt" />
+  </ItemGroup>
 </Project>

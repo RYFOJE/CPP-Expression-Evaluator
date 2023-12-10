@@ -66,6 +66,42 @@ public:
 	[[nodiscard]] value_type	value() const { return value_; };
 	[[nodiscard]] string_type	str() const override;
 
+	
+	// OPERATIONS
+	virtual void perform_addition(operand_stack_type& opStack) override;
+	virtual void perform_subtraction(operand_stack_type& opStack) override;
+	virtual void perform_multiplication(operand_stack_type& opStack) override;
+	virtual void perform_division(operand_stack_type& opStack) override;
+	virtual void perform_power(operand_stack_type& opStack) override;
+	virtual void perform_pow(operand_stack_type& opStack) override;
+	virtual void perform_negation(operand_stack_type& opStack) override;
+	virtual void perform_equality(operand_stack_type& opStack) override;
+	virtual void perform_inequality(operand_stack_type& opStack) override;
+	virtual void perform_less_equal(operand_stack_type& opStack) override;
+	virtual void perform_less(operand_stack_type& opStack) override;
+	virtual void perform_greater(operand_stack_type& opStack) override;
+	virtual void perform_greater_equal(operand_stack_type& opStack) override;
+
+	// FUNCTIONS
+	virtual void perform_abs(operand_stack_type& opStack) override;
+	virtual void perform_arccos(operand_stack_type& opStack) override;
+	virtual void perform_arcsin(operand_stack_type& opStack) override;
+	virtual void perform_arctan(operand_stack_type& opStack) override;
+	virtual void perform_ceil(operand_stack_type& opStack) override;
+	virtual void perform_cos(operand_stack_type& opStack) override;
+	virtual void perform_exp(operand_stack_type& opStack) override;
+	virtual void perform_floor(operand_stack_type& opStack) override;
+	virtual void perform_lb(operand_stack_type& opStack) override;
+	virtual void perform_ln(operand_stack_type& opStack) override;
+	virtual void perform_log(operand_stack_type& opStack) override;
+	virtual void perform_result(operand_stack_type& opStack) override;
+	virtual void perform_sin(operand_stack_type& opStack) override;
+	virtual void perform_sqrt(operand_stack_type& opStack) override;
+	virtual void perform_tan(operand_stack_type& opStack) override;
+	virtual void perform_arctan2(operand_stack_type& opStack) override;
+	virtual void perform_max(operand_stack_type& opStack) override;
+	virtual void perform_min(operand_stack_type& opStack) override;
+
 };
 
 
@@ -86,4 +122,11 @@ public:
 /*! Make a new smart-pointer managed Token object with constructor parameter. */
 template <typename T, class... Args> inline Real::pointer_type [[nodiscard]] make_real(Args ... params) {
 	return Real::pointer_type(new T(params...));
+}
+
+namespace helper {
+
+	[[nodiscard]] bool is_real(const Operand::pointer_type lhs, const Operand::pointer_type rhs);
+	[[nodiscard]] bool is_real(const Operand::pointer_type op);
+
 }

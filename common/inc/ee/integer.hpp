@@ -70,9 +70,43 @@ public:
 	[[nodiscard]]	value_type	value() const { return value_; }
 	[[nodiscard]]	string_type	str() const override;
 
+
+	// OPERATORS
+
+	virtual void perform_addition(operand_stack_type& opStack) override;
+	virtual void perform_subtraction(operand_stack_type& opStack) override;
+	virtual void perform_multiplication(operand_stack_type& opStack) override;
+	virtual void perform_division(operand_stack_type& opStack) override;
+	virtual void perform_modulus(operand_stack_type& opStack) override;
+	virtual void perform_power(operand_stack_type& opStack) override;
+	virtual void perform_pow(operand_stack_type& opStack) override;
+	virtual void perform_equality(operand_stack_type& opStack) override;
+	virtual void perform_inequality(operand_stack_type& opStack) override;
+	virtual void perform_negation(operand_stack_type& opStack) override;
+	virtual void perform_factorial(operand_stack_type& opStack) override;
+
+	// FUNCTIONS
+	virtual void perform_abs(operand_stack_type& opStack) override;
+	virtual void perform_max(operand_stack_type& opStack) override;
+	virtual void perform_min(operand_stack_type& opStack) override;
+
+	// COMPARATOR
+	virtual void perform_less(operand_stack_type& opStack) override;
+	virtual void perform_less_equal(operand_stack_type& opStack) override;
+	virtual void perform_greater(operand_stack_type& opStack) override;
+	virtual void perform_greater_equal(operand_stack_type& opStack) override;
+
 };
 
 /*! Make a new smart-pointer managed Token object with constructor parameter. */
 template <typename T, class... Args> inline Integer::pointer_type [[nodiscard]] make_integer(Args ... params) {
 	return Integer::pointer_type(new T(params...));
+}
+
+namespace helper {
+
+	[[nodiscard]] bool is_integer(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs);
+	[[nodiscard]] bool is_integer(Operand::pointer_type const& op);
+	
+
 }

@@ -59,12 +59,276 @@ the program(s) have been supplied.
 #include <ee/token.hpp>
 #include <cassert>
 #include <deque>
+#include <stack>
 
 /*! Operand token base class. */
 class Operand : public Token {
 public:
 	DEF_POINTER_TYPE(Operand)
 	using operand_list_type = std::deque<Operand::pointer_type>;
+	using operand_stack_type = std::stack<Operand::pointer_type>;
+
+
+	// OPERATORS
+
+	/**
+	 * @brief			Perform addition on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_addition(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform addition not supported for this datatype"); };
+
+	/**
+	 * @brief			Perform subtraction on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_subtraction(operand_stack_type& opStack)		{ throw std::runtime_error("Error: perform subtraction not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform multiplication on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_multiplication(operand_stack_type& opStack)	{ throw std::runtime_error("Error: perform multiplication not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform division on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_division(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform division not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform modulus on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_modulus(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform modulus not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform power on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_power(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform power not supported for this datatype"); };
+	
+	/**
+	 * @brief			Verify inequality on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_inequality(operand_stack_type& opStack)		{ throw std::runtime_error("Error: perform inequality not supported for this datatype"); };
+	
+	/**
+	 * @brief			Verify equality on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_equality(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform equality not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform negation on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_negation(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform negation not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform not on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_not(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform not not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform factorial on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_factorial(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform factorial not supported for this datatype"); };
+	
+	// COMPARAISON
+
+	/**
+	 * @brief			Perform less comparaison on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_less(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform less not supported for this datatype"); };;
+	
+	/**
+	 * @brief			Perform less equalcomparaison on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_less_equal(operand_stack_type& opStack)		{ throw std::runtime_error("Error: perform less equal supported for this datatype"); };;
+	
+	/**
+	 * @brief			Perform greater comparaison on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_greater(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform greater not supported for this datatype"); };;
+	
+	/**
+	 * @brief			Perform greater equal comparaison on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_greater_equal(operand_stack_type& opStack)		{ throw std::runtime_error("Error: perform greater equal not supported for this datatype"); };;
+
+	// LOGICAL OPERATOR
+
+	/**
+	 * @brief			Perform logical and on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_and(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform and not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform logical nand on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_nand(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform nand not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform logical nor on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_nor(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform nor not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform logical or on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_or(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform or not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform logical xor on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_xor(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform xor not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform logical xnor on current Operand and next operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_xnor(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform xnor not supported for this datatype"); };
+
+
+	// FUNCTIONS
+
+	/**
+	 * @brief			Perform abs on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_abs(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform abs not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform arccos on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_arccos(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform arccos not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform arcsin on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_arcsin(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform arcsin not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform arctan on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_arctan(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform arctan not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform ceil on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_ceil(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform ceil not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform cos on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_cos(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform cos not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform exp on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_exp(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform exp not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform floor on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_floor(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform floor not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform lb on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_lb(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform lb not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform ln on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_ln(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform ln not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform log on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_log(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform log not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform result on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_result(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform result not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform sin on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_sin(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform sin not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform sqrt on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_sqrt(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform sqrt not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform tan on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_tan(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform tan not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform arctan2 on current Operand.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_arctan2(operand_stack_type& opStack)			{ throw std::runtime_error("Error: perform arctan2 not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform max on current Operand and next Operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_max(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform max not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform min on current Operand and next Operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_min(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform max not supported for this datatype"); };
+	
+	/**
+	 * @brief			Perform power on current Operand and next Operand in the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_pow(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform pow not supported for this datatype"); };
+
+
+	// VARIABLES
+	
+	/**
+	 * @brief			Assign the value of the next Operand in the opStack to a variable and append it
+	 *					to the opStack.
+	 * @param opStack	The operand stack to be manipulated
+	*/
+	virtual void perform_assignment(operand_stack_type& opStack)		{ throw std::runtime_error("Error: assignment to a non-variable."); };
+
+
 };
 
 
@@ -84,5 +348,4 @@ typename OPERAND_TYPE::value_type [[nodiscard]] value_of(Token::pointer_type con
 
 /*!	Type for a list of operands. */
 using OperandList = Operand::operand_list_type;
-
 

@@ -60,13 +60,18 @@ using namespace std;
 
 MAKEAPP(ee) {
 	cout << "Expression Evaluator, (c) 1998-2023 Garth Santor\n";
+
+	ExpressionEvaluator ee;
+
 	for (unsigned count = 0; ; ++count) {
 		cout << "> ";
 		string command;
-		if (!getline(cin, command) || command.empty())
+		if (!getline(cin, command) || command.empty())			
 			break;
 
-		cout << "[" << count << "] = " << 42 << endl;
+		ExpressionEvaluator::result_type result = ee.evaluate(command);
+		
+		cout << "[" << count << "] = " << result->str() << endl;
 	}
 
 	return EXIT_SUCCESS;

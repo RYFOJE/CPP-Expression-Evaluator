@@ -76,7 +76,7 @@ the program(s) have been supplied.
 			if (opStack.empty())
 				throw std::runtime_error("Right Paranthesis, has no matching left parenthesis.");
 			
-			opStack.pop(); // TODO Check to see if this is the correct way to implement this
+			opStack.pop();
 
 			if (!opStack.empty() && is<Function>(opStack.top())) {
 				outputQ.push_back(opStack.top());

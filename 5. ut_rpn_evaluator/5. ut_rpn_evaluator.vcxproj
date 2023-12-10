@@ -43,6 +43,9 @@
   <ItemGroup>
     <ClInclude Include="ut_test_phases.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="gats-test-log-file.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

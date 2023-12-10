@@ -58,6 +58,23 @@ public:
 
 	[[nodiscard]]	value_type	value() const { return value_; }
 	[[nodiscard]]	string_type	str() const override;
+
+
+	virtual void perform_not(operand_stack_type& opStack) override;
+	virtual void perform_and(operand_stack_type& opStack) override;
+	virtual void perform_nand(operand_stack_type& opStack) override;
+	virtual void perform_nor(operand_stack_type& opStack) override;
+	virtual void perform_or(operand_stack_type& opStack) override;
+	virtual void perform_xor(operand_stack_type& opStack) override;
+	virtual void perform_xnor(operand_stack_type& opStack) override;
+
+	virtual void perform_inequality(operand_stack_type& opStack) override;
+	virtual void perform_equality(operand_stack_type& opStack) override;
+	virtual void perform_greater_equal(operand_stack_type& opStack) override;
+	virtual void perform_greater(operand_stack_type& opStack) override;
+	virtual void perform_less(operand_stack_type& opStack) override;
+	virtual void perform_less_equal(operand_stack_type& opStack) override;
+
 };
 
 
@@ -72,3 +89,15 @@ class False : public Boolean {
 public:
 	False() : Boolean(false) { }
 };
+
+/*! Boolean factory function. */
+inline Boolean::pointer_type make_bool(bool value) {
+	return Boolean::pointer_type(new Boolean(value));
+}
+
+namespace helper {
+
+	[[nodiscard]] bool is_bool(Operand::pointer_type const& lhs, Operand::pointer_type const& rhs);
+	[[nodiscard]] bool is_bool(Operand::pointer_type const& op);
+
+}
