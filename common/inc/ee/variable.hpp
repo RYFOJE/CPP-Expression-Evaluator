@@ -56,6 +56,9 @@ public:
 	[[nodiscard]]	value_type	value() const { return value_m; }
 					void		set(Operand::pointer_type const& value) { value_m = value; }
 	[[nodiscard]]	string_type	str() const override;
+
+	virtual void perform_assignment(operand_stack_type& opStack) override;
+
 };
 
 namespace helper {

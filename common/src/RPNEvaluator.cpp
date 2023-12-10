@@ -34,6 +34,9 @@ the program(s) have been supplied.
 #include <ee/RPNEvaluator.hpp>
 #include <ee/integer.hpp>
 #include <ee/operation.hpp>
+
+#include <ee/variable.hpp>
+
 #include <cassert>
 #include <stack>
 

@@ -97,6 +97,7 @@ the program(s) have been supplied.
 
 }
 
+
 void Abs::perform(std::stack<Operand::pointer_type>& opStack) const {
 
 	// Get the right operand

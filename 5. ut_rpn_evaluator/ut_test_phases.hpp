@@ -29,7 +29,7 @@
 
 
 
-#define TEST_VARIABLE false
+#define TEST_VARIABLE true
 #define TEST_RESULT false
 
 #define TEST_PARSER true

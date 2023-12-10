@@ -60,13 +60,24 @@ using namespace std;
 
 MAKEAPP(ee) {
 	cout << "Expression Evaluator, (c) 1998-2023 Garth Santor\n";
+
+	Tokenizer tokenizer;
+	Parser parser;
+	RPNEvaluator rpnEvaluator;
+
+	TokenList tokens;
+
 	for (unsigned count = 0; ; ++count) {
 		cout << "> ";
 		string command;
-		if (!getline(cin, command) || command.empty())
+		if (!getline(cin, command) || command.empty())			
 			break;
 
-		cout << "[" << count << "] = " << 42 << endl;
+		tokens = tokenizer.tokenize(command);
+		tokens = parser.parse(tokens);
+		Operand::pointer_type result = rpnEvaluator.evaluate(tokens);
+		
+		cout << "[" << count << "] = " << result->str() << endl;
 	}
 
 	return EXIT_SUCCESS;

@@ -62,7 +62,23 @@ using namespace std;
 [[nodiscard]] Real::string_type Real::str() const {
 	ostringstream oss;
 	oss << /*"Real: " << */fixed << setprecision(numeric_limits<value_type>::digits10) << value_;
-	return oss.str();
+
+	std::string str = oss.str();
+
+	auto no_trailing_zeros = str.find_last_not_of('0');
+	if (no_trailing_zeros != string::npos) {
+		
+		// Remove trailing zeros
+		string trimmed = str.substr(0, no_trailing_zeros + 1);
+		
+		// If the decimal point is the last character remove it
+		if (trimmed.back() == '.') {
+			trimmed.pop_back();
+		}
+		
+		return trimmed;
+	}
+	return str;
 }
 
 namespace helper {

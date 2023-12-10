@@ -60,3 +60,13 @@ namespace helper {
 	};
 
 }
+
+void Variable::perform_assignment(operand_stack_type& opStack) {
+	// pop the value from the stack
+	Operand::pointer_type value = opStack.top();
+	opStack.pop();
+
+	// push the variable onto the stack
+	opStack.push(helper::make_variable(value));
+
+}

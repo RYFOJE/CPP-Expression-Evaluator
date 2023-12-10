@@ -118,6 +118,11 @@ public:
 	virtual void perform_min(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform max not supported for this datatype"); };
 	virtual void perform_pow(operand_stack_type& opStack)				{ throw std::runtime_error("Error: perform pow not supported for this datatype"); };
 
+
+	// VARIABLES
+	virtual void perform_assignment(operand_stack_type& opStack) { throw std::runtime_error("Error: assignment to a non-variable."); };
+
+
 };
 
 

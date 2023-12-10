@@ -88,6 +88,18 @@ the program(s) have been supplied.
 		newRhs = get_as_real(rhs);
 	}
 
+	// If any of the variables are not initialized
+	else if (is<Variable>(lhs) || is<Variable>(rhs)) {
+
+		Variable::pointer_type lVar = helper::make_variable(lhs);
+		Variable::pointer_type rVar = helper::make_variable(rhs);
+
+		if (!(helper::is_var_initialized(lVar) && helper::is_var_initialized(lVar))) {
+			throw std::runtime_error("Error: Variable not initialized");
+		}
+
+	}
+
 	else {
 		newLhs = lhs;
 		newRhs = rhs;
@@ -97,6 +109,31 @@ the program(s) have been supplied.
 	opStack.push(newLhs);
 
 
+
+}
+[[nodiscard]] void prepare_single_operand(Operand::operand_stack_type& opStack) {
+
+	/*
+	Operand::pointer_type op = opStack.top();
+	opStack.pop();
+
+	Operand::pointer_type newOp;
+
+	// If not assigning to a variable
+	if (is<Variable>(op)) {
+
+		Variable::pointer_type var = helper::make_variable(op);
+
+		if (!helper::is_var_initialized(var)) {
+			throw std::runtime_error("Error: Variable not initialized");
+		}
+
+		newOp = make_operand<Operand>(op);
+
+	}
+
+	opStack.push(newOp);
+	*/
 
 }
 
@@ -114,7 +151,9 @@ void Power::perform(std::stack<Operand::pointer_type>& opStack) const {
 }
 void Factorial::perform(std::stack<Operand::pointer_type>& opStack) const {
 
-	// Get the top right operand
+
+
+	// Get the right operand
 	Operand::pointer_type op = opStack.top();
 	opStack.pop();
 
@@ -180,7 +219,7 @@ void Identity::perform(std::stack<Operand::pointer_type>& opStack) const {
 }
 void Negation::perform(std::stack<Operand::pointer_type>& opStack) const {
 
-	// Get the top right operand
+	// Get the right operand
 	Operand::pointer_type op = opStack.top();
 	opStack.pop();
 
@@ -189,6 +228,18 @@ void Negation::perform(std::stack<Operand::pointer_type>& opStack) const {
 }
 void Assignment::perform(std::stack<Operand::pointer_type>& opStack) const {
 
+	// Get the right operand
+	Operand::pointer_type rhs = opStack.top();
+	opStack.pop();
+	
+	// Get the left operand
+	Operand::pointer_type lhs = opStack.top();
+	opStack.pop();
+
+	opStack.push(rhs);
+
+	lhs->perform_assignment(opStack);
+	
 }
 
 void And::perform(std::stack<Operand::pointer_type>& opStack) const {
