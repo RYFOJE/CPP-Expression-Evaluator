@@ -70,3 +70,10 @@ void Variable::perform_assignment(operand_stack_type& opStack) {
 	opStack.push(helper::make_variable(value));
 
 }
+
+void Variable::perform_result(operand_stack_type& opStack) {
+
+	// push the variable onto the stack
+	opStack.push(this->value());
+
+}

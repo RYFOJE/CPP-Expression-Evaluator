@@ -79,4 +79,3 @@ the program(s) have been supplied.
 	// The following line is just a placeholder until you have completed the parser.
 	return opStack.top();
 }
-

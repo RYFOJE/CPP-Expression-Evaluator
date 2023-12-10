@@ -51,6 +51,11 @@ the program(s) have been supplied.
 #include <iostream>
 
 
+/**
+ * @brief			
+ * @param operand 
+ * @return 
+*/
 [[nodiscard]] static Real::pointer_type get_as_real(Operand::pointer_type operand) {
 
 		if (is<Real>(operand)) {
@@ -111,32 +116,6 @@ the program(s) have been supplied.
 
 
 }
-[[nodiscard]] void prepare_single_operand(Operand::operand_stack_type& opStack) {
-
-	/*
-	Operand::pointer_type op = opStack.top();
-	opStack.pop();
-
-	Operand::pointer_type newOp;
-
-	// If not assigning to a variable
-	if (is<Variable>(op)) {
-
-		Variable::pointer_type var = helper::make_variable(op);
-
-		if (!helper::is_var_initialized(var)) {
-			throw std::runtime_error("Error: Variable not initialized");
-		}
-
-		newOp = make_operand<Operand>(op);
-
-	}
-
-	opStack.push(newOp);
-	*/
-
-}
-
 
 void Power::perform(std::stack<Operand::pointer_type>& opStack) const {
 

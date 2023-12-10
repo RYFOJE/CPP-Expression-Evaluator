@@ -58,6 +58,7 @@ public:
 	[[nodiscard]]	string_type	str() const override;
 
 	virtual void perform_assignment(operand_stack_type& opStack) override;
+	virtual void perform_result(operand_stack_type& opStack) override;
 
 };
 

@@ -120,7 +120,7 @@ public:
 
 
 	// VARIABLES
-	virtual void perform_assignment(operand_stack_type& opStack) { throw std::runtime_error("Error: assignment to a non-variable."); };
+	virtual void perform_assignment(operand_stack_type& opStack)		{ throw std::runtime_error("Error: assignment to a non-variable."); };
 
 
 };
