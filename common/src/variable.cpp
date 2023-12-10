@@ -87,3 +87,4 @@ void Variable::perform_result(operand_stack_type& opStack) {
 	opStack.push(this->value());
 
 }
+
