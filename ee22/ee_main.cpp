@@ -69,9 +69,16 @@ MAKEAPP(ee) {
 		if (!getline(cin, command) || command.empty())			
 			break;
 
+		try {
+
 		ExpressionEvaluator::result_type result = ee.evaluate(command);
 		
 		cout << "[" << count << "] = " << result->str() << endl;
+	
+		}
+		catch (exception const& ex) {
+			cout << "Error: " << ex.what() << endl;
+		}
 	}
 
 	return EXIT_SUCCESS;

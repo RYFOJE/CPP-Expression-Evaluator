@@ -172,6 +172,10 @@ void Real::perform_division(operand_stack_type& opStack) {
 	Operand::pointer_type lhs = opStack.top();
 	opStack.pop();
 
+	// Prevent division by zero
+	if (this->value_ == 0)
+		throw std::runtime_error("Error: Division by zero.");
+
 	if (is<Real>(lhs)) {
 		Real::pointer_type lhs_real = helper::get_as_real(lhs);
 		opStack.push(make_operand<Real>(value_of<Real>(lhs_real) / this->value_));
